@@ -7,22 +7,22 @@ import 'package:scarvs/core/notifiers/theme.notifier.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const Core());
-}
-
-class Core extends StatelessWidget {
-  const Core({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: AppProvider.providers,
-      child: const Lava(),
-    );
-  }
+  runApp(const Lava());
 }
 
 class Lava extends StatelessWidget {
   const Lava({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: AppProvider.providers,
+      child: const Core(),
+    );
+  }
+}
+
+class Core extends StatelessWidget {
+  const Core({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeNotifier>(

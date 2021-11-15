@@ -4,15 +4,24 @@ import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/app/shared/app.fonts.dart';
 import 'package:scarvs/app/shared/dimensions.dart';
+import 'package:scarvs/core/notifiers/authentication.notifer.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
   final TextEditingController userEmailController = TextEditingController();
   final TextEditingController userPassController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    _userLogin() {
+      var authNotifier =
+          Provider.of<AuthenticationNotifier>(context, listen: false);
+      authNotifier.userLogin(
+          context: context,
+          useremail: userEmailController.text,
+          userpassword: userPassController.text);
+    }
+
     ThemeNotifier _themeNotifier = Provider.of<ThemeNotifier>(context);
     var themeFlag = _themeNotifier.darkTheme;
     return SafeArea(
@@ -221,27 +230,25 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   vSizedBox2,
-                  Consumer<ThemeNotifier>(builder: (context, notifier, _) {
-                    return MaterialButton(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      minWidth: MediaQuery.of(context).size.width * 0.8,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  MaterialButton(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    minWidth: MediaQuery.of(context).size.width * 0.8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    onPressed: () async {
+                      _userLogin();
+                    },
+                    color: AppColors.rawSienna,
+                    child: const Text(
+                      'LOGIN',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
                       ),
-                      onPressed: () async {
-                        notifier.toggleTheme();
-                      },
-                      color: AppColors.rawSienna,
-                      child: const Text(
-                        'LOGIN',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    );
-                  }),
+                    ),
+                  )
                 ],
               ),
             ),

@@ -4,6 +4,7 @@ import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/app/shared/app.fonts.dart';
 import 'package:scarvs/app/shared/dimensions.dart';
+import 'package:scarvs/core/notifiers/authentication.notifer.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -11,11 +12,23 @@ class SignUpScreen extends StatelessWidget {
   final TextEditingController userEmailController = TextEditingController();
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController userPassController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     ThemeNotifier _themeNotifier = Provider.of<ThemeNotifier>(context);
     var themeFlag = _themeNotifier.darkTheme;
+    AuthenticationNotifier authNotifier(bool renderUI) =>
+        Provider.of<AuthenticationNotifier>(context, listen: renderUI);
+
+    _createAccount() {
+      authNotifier(false).createAccount(
+          context: context,
+          useremail: userEmailController.text,
+          username: userNameController.text,
+          userpassword: userPassController.text);
+    }
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: themeFlag ? AppColors.mirage : AppColors.creamColor,
@@ -115,6 +128,7 @@ class SignUpScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Form(
+                    key: _formKey,
                     child: Column(
                       children: [
                         Padding(
@@ -200,6 +214,10 @@ class SignUpScreen extends StatelessWidget {
                           padding:
                               const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
                           child: TextFormField(
+                            onChanged: (val) {
+                              authNotifier(false)
+                                  .checkPasswordStrength(password: val);
+                            },
                             keyboardType: TextInputType.visiblePassword,
                             style: const TextStyle(
                               color: Colors.black,
@@ -237,28 +255,68 @@ class SignUpScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  vSizedBox1,
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
+                    child: Row(
+                      children: [
+                        Text(authNotifier(true).passwordEmoji!),
+                        hSizedBox1,
+                        if (authNotifier(true).passwordLevel! == 'Weak')
+                          AnimatedContainer(
+                            duration: const Duration(seconds: 2),
+                            height: 10,
+                            width: 100,
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(15)),
+                            curve: Curves.easeIn,
+                          ),
+                        if (authNotifier(true).passwordLevel! == 'Medium')
+                          AnimatedContainer(
+                            duration: const Duration(seconds: 2),
+                            height: 10,
+                            width: 220,
+                            decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(15)),
+                            curve: Curves.easeIn,
+                          ),
+                        if (authNotifier(true).passwordLevel! == 'Strong')
+                          AnimatedContainer(
+                            duration: const Duration(seconds: 2),
+                            height: 10,
+                            width: 280,
+                            decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(15)),
+                            curve: Curves.easeInCubic,
+                          )
+                      ],
+                    ),
+                  ),
                   vSizedBox2,
-                  Consumer<ThemeNotifier>(builder: (context, notifier, _) {
-                    return MaterialButton(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      minWidth: MediaQuery.of(context).size.width * 0.8,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  MaterialButton(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    minWidth: MediaQuery.of(context).size.width * 0.8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        _createAccount();
+                      }
+                    },
+                    color: AppColors.rawSienna,
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
                       ),
-                      onPressed: () async {
-                        notifier.toggleTheme();
-                      },
-                      color: AppColors.rawSienna,
-                      child: const Text(
-                        'Sign Up',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    );
-                  }),
+                    ),
+                  ),
                 ],
               ),
             ),
