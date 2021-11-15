@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:cache_manager/cache_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/constants/app.keys.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
+import 'package:scarvs/app/shared/app.fonts.dart';
+import 'package:scarvs/core/notifiers/theme.notifier.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -26,7 +29,15 @@ class _SplashScreenState extends State<SplashScreen> {
                 });
       },
       actionIfNotNull: () {
-        Navigator.of(context).pushNamed(AppRouter.loginRoute);
+        CacheManagerUtils.conditionalCache(
+            key: AppKeys.userData,
+            valueType: ValueType.StringValue,
+            actionIfNull: () {
+              Navigator.of(context).pushNamed(AppRouter.loginRoute);
+            },
+            actionIfNotNull: () {
+              Navigator.of(context).pushNamed(AppRouter.homeRoute);
+            });
       },
     );
   }
@@ -39,8 +50,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeNotifier _themeNotifier = Provider.of<ThemeNotifier>(context);
+    var themeFlag = _themeNotifier.darkTheme;
     return Scaffold(
-      backgroundColor: AppColors.creamColor,
+      backgroundColor: themeFlag ? AppColors.mirage : AppColors.creamColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +62,8 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'Scarvs',
               style: TextStyle(
-                color: AppColors.mirage,
+                color: themeFlag ? AppColors.creamColor : AppColors.mirage,
+                fontFamily: AppFonts.contax,
                 fontSize: 50.0,
               ),
             ),

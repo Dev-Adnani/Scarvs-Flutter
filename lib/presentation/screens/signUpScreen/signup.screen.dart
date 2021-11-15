@@ -24,18 +24,18 @@ class SignUpScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            vSizedBox5,
+            vSizedBox4,
             vSizedBox1,
             Padding(
               padding: const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
               child: RichText(
                 text: TextSpan(
-                  text: 'Hey There ',
+                  text: 'Hey There 😲',
                   style: TextStyle(
                     color: themeFlag ? AppColors.creamColor : AppColors.mirage,
                     fontWeight: FontWeight.w900,
                     fontFamily: AppFonts.contax,
-                    fontSize: 40.0,
+                    fontSize: 35.0,
                   ),
                 ),
               ),
@@ -54,18 +54,18 @@ class SignUpScreen extends StatelessWidget {
                                 ? AppColors.creamColor
                                 : AppColors.mirage,
                             fontFamily: AppFonts.contax,
-                            fontSize: 34.0,
+                            fontSize: 28.0,
                             fontWeight: FontWeight.w300,
                           ),
                         ),
                         TextSpan(
-                          text: 'Scarvs !  ',
+                          text: 'Scarvs ! 🛒  ',
                           style: TextStyle(
                             color: themeFlag
                                 ? AppColors.creamColor
                                 : AppColors.mirage,
                             fontFamily: AppFonts.contax,
-                            fontSize: 34.0,
+                            fontSize: 28.0,
                           ),
                         ),
                       ],
@@ -83,7 +83,7 @@ class SignUpScreen extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: 'Sign Up ',
+                          text: "Also Don't Worry ",
                           style: TextStyle(
                             color: themeFlag
                                 ? AppColors.creamColor
@@ -93,17 +93,7 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: 'Right Now & ',
-                          style: TextStyle(
-                            color: themeFlag
-                                ? AppColors.creamColor
-                                : AppColors.mirage,
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        TextSpan(
-                          text: 'Start Spending Your Money',
+                          text: "We Don't Sell User Data",
                           style: TextStyle(
                             color: themeFlag
                                 ? AppColors.creamColor
@@ -260,7 +250,7 @@ class SignUpScreen extends StatelessWidget {
                       },
                       color: AppColors.rawSienna,
                       child: const Text(
-                        'LOGIN',
+                        'Sign Up',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 17,

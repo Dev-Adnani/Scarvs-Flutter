@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
+import 'package:scarvs/app/shared/app.fonts.dart';
 import 'package:scarvs/app/shared/dimensions.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 
@@ -28,10 +29,11 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
               child: RichText(
                 text: TextSpan(
-                  text: 'Hey There ',
+                  text: 'Hey There 😲 ',
                   style: TextStyle(
                     color: themeFlag ? AppColors.creamColor : AppColors.mirage,
                     fontWeight: FontWeight.w900,
+                    fontFamily: AppFonts.contax,
                     fontSize: 40.0,
                   ),
                 ),
@@ -51,7 +53,8 @@ class LoginScreen extends StatelessWidget {
                                 ? AppColors.creamColor
                                 : AppColors.mirage,
                             fontWeight: FontWeight.w300,
-                            fontSize: 34.0,
+                            fontSize: 28.0,
+                            fontFamily: AppFonts.contax,
                           ),
                         ),
                         TextSpan(
@@ -60,17 +63,19 @@ class LoginScreen extends StatelessWidget {
                             color: themeFlag
                                 ? AppColors.creamColor
                                 : AppColors.mirage,
-                            fontSize: 34.0,
+                            fontSize: 28.0,
+                            fontFamily: AppFonts.contax,
                             fontWeight: FontWeight.w300,
                           ),
                         ),
                         TextSpan(
-                          text: 'Scarvs ',
+                          text: 'Scarvs ! 🛒',
                           style: TextStyle(
                             color: themeFlag
                                 ? AppColors.creamColor
                                 : AppColors.mirage,
-                            fontSize: 34.0,
+                            fontSize: 28.0,
+                            fontFamily: AppFonts.contax,
                             fontWeight: FontWeight.w300,
                           ),
                         ),

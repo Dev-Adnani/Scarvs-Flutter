@@ -1,5 +1,5 @@
 class AppKeys {
-  static String userJwt = 'email';
   static String appMode = 'darkMode';
+  static String userData = 'jwt';
   static String onBoardDone = 'onBoard';
 }
