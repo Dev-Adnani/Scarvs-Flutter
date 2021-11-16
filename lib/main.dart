@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.theme.dart';
+import 'package:scarvs/app/localization/app.localizations.dart';
 import 'package:scarvs/app/providers/app.provider.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
@@ -32,6 +33,7 @@ class Core extends StatelessWidget {
       builder: (context, notifier, _) {
         return MaterialApp(
           title: 'Scarvs',
+          supportedLocales: AppLocalization.all,
           theme: notifier.darkTheme ? darkTheme : lightTheme,
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouter.generateRoute,

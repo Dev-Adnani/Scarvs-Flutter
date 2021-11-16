@@ -4,7 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:scarvs/app/constants/app.animations.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
-import 'package:scarvs/app/shared/dimensions.dart';
+import 'package:scarvs/presentation/widgets/dimensions.dart';
 import 'package:scarvs/core/models/onBoarding.model.dart';
 
 class OnBoardingScreen extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
-import 'package:scarvs/app/shared/app.fonts.dart';
+import 'package:scarvs/app/constants/app.fonts.dart';
 
 class CustomTextField {
   static customTextField(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scarvs/app/shared/app.fonts.dart';
+import 'package:scarvs/app/constants/app.fonts.dart';
 import 'app.colors.dart';
 
 final darkTheme = ThemeData(
