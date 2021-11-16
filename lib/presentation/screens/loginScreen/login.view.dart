@@ -6,20 +6,25 @@ import 'package:scarvs/app/shared/app.fonts.dart';
 import 'package:scarvs/app/shared/dimensions.dart';
 import 'package:scarvs/core/notifiers/authentication.notifer.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
+import 'package:scarvs/presentation/widgets/custom.text.field.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
   final TextEditingController userEmailController = TextEditingController();
   final TextEditingController userPassController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     _userLogin() {
-      var authNotifier =
-          Provider.of<AuthenticationNotifier>(context, listen: false);
-      authNotifier.userLogin(
-          context: context,
-          useremail: userEmailController.text,
-          userpassword: userPassController.text);
+      if (_formKey.currentState!.validate()) {
+        var authNotifier =
+            Provider.of<AuthenticationNotifier>(context, listen: false);
+        authNotifier.userLogin(
+            context: context,
+            useremail: userEmailController.text,
+            userpassword: userPassController.text);
+      }
     }
 
     ThemeNotifier _themeNotifier = Provider.of<ThemeNotifier>(context);
@@ -145,87 +150,33 @@ class LoginScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Form(
+                    key: _formKey,
                     child: Column(
                       children: [
                         Padding(
                           padding:
                               const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            style: const TextStyle(
-                              color: Colors.black,
-                            ),
-                            controller: userEmailController,
+                          child: CustomTextField.customTextField(
+                            textEditingController: userEmailController,
+                            hintText: 'Enter an email',
                             validator: (val) =>
                                 !RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
                                         .hasMatch(val!)
                                     ? 'Enter an email'
                                     : null,
-                            decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              filled: true,
-                              contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 30, vertical: 20),
-                              hintText: "Enter Email",
-                              hintStyle: TextStyle(
-                                color: AppColors.blueZodiac,
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(12),
-                                ),
-                                borderSide: BorderSide(
-                                  width: 1.5,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(8),
-                                ),
-                                borderSide:
-                                    BorderSide(color: AppColors.rawSienna),
-                              ),
-                            ),
                           ),
                         ),
+                        vSizedBox1,
                         Padding(
                           padding:
-                              const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.visiblePassword,
-                            style: const TextStyle(
-                              color: Colors.black,
-                            ),
-                            controller: userPassController,
+                              const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
+                          child: CustomTextField.customTextField(
+                            textEditingController: userPassController,
+                            hintText: 'Enter a password',
                             validator: (val) =>
-                                val!.isEmpty ? 'Enter an password' : null,
-                            decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              filled: true,
-                              contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 30, vertical: 20),
-                              hintText: "Enter Password",
-                              hintStyle: TextStyle(
-                                color: AppColors.blueZodiac,
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(12),
-                                ),
-                                borderSide: BorderSide(
-                                  width: 1.5,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(8),
-                                ),
-                                borderSide:
-                                    BorderSide(color: AppColors.rawSienna),
-                              ),
-                            ),
+                                val!.isEmpty ? 'Enter a password' : null,
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ),

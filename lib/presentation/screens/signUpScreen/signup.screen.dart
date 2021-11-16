@@ -6,6 +6,8 @@ import 'package:scarvs/app/shared/app.fonts.dart';
 import 'package:scarvs/app/shared/dimensions.dart';
 import 'package:scarvs/core/notifiers/authentication.notifer.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
+import 'package:scarvs/presentation/widgets/custom.animated.container.dart';
+import 'package:scarvs/presentation/widgets/custom.text.field.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
@@ -22,11 +24,13 @@ class SignUpScreen extends StatelessWidget {
         Provider.of<AuthenticationNotifier>(context, listen: renderUI);
 
     _createAccount() {
-      authNotifier(false).createAccount(
-          context: context,
-          useremail: userEmailController.text,
-          username: userNameController.text,
-          userpassword: userPassController.text);
+      if (_formKey.currentState!.validate()) {
+        authNotifier(false).createAccount(
+            context: context,
+            useremail: userEmailController.text,
+            username: userNameController.text,
+            userpassword: userPassController.text);
+      }
     }
 
     return SafeArea(
@@ -134,122 +138,37 @@ class SignUpScreen extends StatelessWidget {
                         Padding(
                           padding:
                               const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.visiblePassword,
-                            style: const TextStyle(
-                              color: Colors.black,
-                            ),
-                            controller: userNameController,
-                            validator: (val) =>
-                                val!.isEmpty ? 'Enter an Username' : null,
-                            decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              filled: true,
-                              contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 30, vertical: 20),
-                              hintText: "Enter Username",
-                              hintStyle: TextStyle(
-                                color: AppColors.blueZodiac,
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(12),
-                                ),
-                                borderSide: BorderSide(
-                                  width: 1.5,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(8),
-                                ),
-                                borderSide:
-                                    BorderSide(color: AppColors.rawSienna),
-                              ),
-                            ),
-                          ),
+                          child: CustomTextField.customTextField(
+                              textEditingController: userNameController,
+                              hintText: 'Enter User Name',
+                              validator: (val) =>
+                                  val!.isEmpty ? 'Enter an Username' : null),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            style: const TextStyle(
-                              color: Colors.black,
-                            ),
-                            controller: userEmailController,
+                          child: CustomTextField.customTextField(
+                            textEditingController: userEmailController,
+                            hintText: 'Enter an email',
                             validator: (val) =>
                                 !RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
                                         .hasMatch(val!)
                                     ? 'Enter an email'
                                     : null,
-                            decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              filled: true,
-                              contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 30, vertical: 20),
-                              hintText: "Enter Email",
-                              hintStyle: TextStyle(
-                                color: AppColors.blueZodiac,
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(12),
-                                ),
-                                borderSide: BorderSide(
-                                  width: 1.5,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(8),
-                                ),
-                                borderSide:
-                                    BorderSide(color: AppColors.rawSienna),
-                              ),
-                            ),
                           ),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
-                          child: TextFormField(
+                          child: CustomTextField.customTextField(
                             onChanged: (val) {
                               authNotifier(false)
                                   .checkPasswordStrength(password: val);
                             },
-                            keyboardType: TextInputType.visiblePassword,
-                            style: const TextStyle(
-                              color: Colors.black,
-                            ),
-                            controller: userPassController,
+                            textEditingController: userPassController,
+                            hintText: 'Enter a Password',
                             validator: (val) =>
-                                val!.isEmpty ? 'Enter an password' : null,
-                            decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              filled: true,
-                              contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 30, vertical: 20),
-                              hintText: "Enter Password",
-                              hintStyle: TextStyle(
-                                color: AppColors.blueZodiac,
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(12),
-                                ),
-                                borderSide: BorderSide(
-                                  width: 1.5,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(8),
-                                ),
-                                borderSide:
-                                    BorderSide(color: AppColors.rawSienna),
-                              ),
-                            ),
+                                val!.isEmpty ? 'Enter a password' : null,
                           ),
                         ),
                       ],
@@ -263,35 +182,29 @@ class SignUpScreen extends StatelessWidget {
                         Text(authNotifier(true).passwordEmoji!),
                         hSizedBox1,
                         if (authNotifier(true).passwordLevel! == 'Weak')
-                          AnimatedContainer(
-                            duration: const Duration(seconds: 2),
+                          CustomAnimatedContainer.customAnimatedContainer(
                             height: 10,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(15)),
+                            width: MediaQuery.of(context).size.width * 0.10,
+                            context: context,
+                            color: Colors.red,
                             curve: Curves.easeIn,
                           ),
                         if (authNotifier(true).passwordLevel! == 'Medium')
-                          AnimatedContainer(
-                            duration: const Duration(seconds: 2),
+                          CustomAnimatedContainer.customAnimatedContainer(
                             height: 10,
-                            width: 220,
-                            decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(15)),
+                            width: MediaQuery.of(context).size.width * 0.40,
+                            context: context,
+                            color: Colors.blue,
                             curve: Curves.easeIn,
                           ),
                         if (authNotifier(true).passwordLevel! == 'Strong')
-                          AnimatedContainer(
-                            duration: const Duration(seconds: 2),
+                          CustomAnimatedContainer.customAnimatedContainer(
                             height: 10,
-                            width: 280,
-                            decoration: BoxDecoration(
-                                color: Colors.green,
-                                borderRadius: BorderRadius.circular(15)),
-                            curve: Curves.easeInCubic,
-                          )
+                            width: MediaQuery.of(context).size.width * 0.70,
+                            context: context,
+                            color: Colors.green,
+                            curve: Curves.easeIn,
+                          ),
                       ],
                     ),
                   ),
@@ -303,9 +216,7 @@ class SignUpScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        _createAccount();
-                      }
+                      _createAccount();
                     },
                     color: AppColors.rawSienna,
                     child: const Text(
