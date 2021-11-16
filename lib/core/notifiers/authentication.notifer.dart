@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print, recursive_getters
 
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/api/authentication.api.dart';
@@ -55,6 +56,9 @@ class AuthenticationNotifier with ChangeNotifier {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackUtil.stylishSnackBar(text: authData, context: context));
       }
+    } on SocketException catch (_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackUtil.stylishSnackBar(text: 'Oops No Network', context: context));
     } catch (e) {
       print(e);
     }
@@ -82,6 +86,9 @@ class AuthenticationNotifier with ChangeNotifier {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackUtil.stylishSnackBar(text: authData, context: context));
       }
+    } on SocketException catch (_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackUtil.stylishSnackBar(text: 'Oops No Network', context: context));
     } catch (e) {
       print(e);
     }
