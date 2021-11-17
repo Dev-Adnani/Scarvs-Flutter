@@ -1,7 +1,7 @@
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:scarvs/app/constants/app.animations.dart';
+import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/presentation/widgets/dimensions.dart';
@@ -12,19 +12,19 @@ class OnBoardingScreen extends StatefulWidget {
 
   final List<OnBoardingModel> cards = [
     OnBoardingModel(
-      image: AppAnimations.onBoardingOne,
+      image: AppAssets.onBoardingOne,
       title: 'Delivering Happiness',
       textColor: Colors.white,
       bgColor: AppColors.mirage,
     ),
     OnBoardingModel(
-      image: AppAnimations.onBoardingTwo,
+      image: AppAssets.onBoardingTwo,
       title: "Customer Support 24*7",
       bgColor: AppColors.creamColor,
       textColor: AppColors.mirage,
     ),
     OnBoardingModel(
-      image: AppAnimations.onBoardingThree,
+      image: AppAssets.onBoardingThree,
       title: "Happily Serving Customer's World Wide Through Devices",
       bgColor: AppColors.rawSienna,
       textColor: Colors.white,
