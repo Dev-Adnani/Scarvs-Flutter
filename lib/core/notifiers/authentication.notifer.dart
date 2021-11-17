@@ -2,7 +2,9 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'package:cache_manager/cache_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:scarvs/app/constants/app.keys.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/api/authentication.api.dart';
 import 'package:scarvs/core/utils/snackbar.util.dart';
@@ -51,20 +53,22 @@ class AuthenticationNotifier with ChangeNotifier {
       dynamic authData = parseData['data'];
 
       if (isAuthenticated) {
-        Navigator.of(context).pushReplacementNamed(AppRouter.homeRoute);
+        WriteCache.setString(key: AppKeys.userData, value: authData)
+            .whenComplete(
+          () => Navigator.of(context).pushReplacementNamed(AppRouter.homeRoute),
+        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackUtil.stylishSnackBar(text: authData, context: context));
       }
     } on SocketException catch (_) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackUtil.stylishSnackBar(text: 'Oops No Network', context: context));
+      ScaffoldMessenger.of(context).showSnackBar(SnackUtil.stylishSnackBar(
+          text: 'Oops No You Need A Good Internet Connection',
+          context: context));
     } catch (e) {
       print(e);
     }
   }
-
-  //27 Min
 
   Future userLogin(
       {required String useremail,
@@ -80,15 +84,18 @@ class AuthenticationNotifier with ChangeNotifier {
       dynamic authData = parseData['data'];
 
       if (isAuthenticated) {
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackUtil.stylishSnackBar(text: authData, context: context));
+        WriteCache.setString(key: AppKeys.userData, value: authData)
+            .whenComplete(
+          () => Navigator.of(context).pushReplacementNamed(AppRouter.homeRoute),
+        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackUtil.stylishSnackBar(text: authData, context: context));
       }
     } on SocketException catch (_) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackUtil.stylishSnackBar(text: 'Oops No Network', context: context));
+      ScaffoldMessenger.of(context).showSnackBar(SnackUtil.stylishSnackBar(
+          text: 'Oops No You Need A Good Internet Connection',
+          context: context));
     } catch (e) {
       print(e);
     }

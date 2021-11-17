@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Navigator.of(context).pushNamed(AppRouter.loginRoute);
             },
             actionIfNotNull: () {
-              Navigator.of(context).pushNamed(AppRouter.homeRoute);
+              Navigator.of(context).pushReplacementNamed(AppRouter.homeRoute);
             });
       },
     );
