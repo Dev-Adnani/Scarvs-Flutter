@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
-import 'package:scarvs/presentation/screens/ProductsScreen/products.screen.dart';
 import 'package:scarvs/presentation/screens/cartScreen/cart.screen.dart';
 import 'package:scarvs/presentation/screens/favouriteScreen/favourite.screen.dart';
+import 'package:scarvs/presentation/screens/productsScreen/products.screen.dart';
 import 'package:scarvs/presentation/screens/profileScreen/profile.screen.dart';
 import 'package:scarvs/presentation/screens/searchScreen/search.screen.dart';
 

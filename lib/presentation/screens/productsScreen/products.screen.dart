@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
-import 'package:scarvs/core/notifiers/product.notifier.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:scarvs/presentation/widgets/custom.text.widget.dart';
 import 'package:scarvs/presentation/widgets/dimensions.dart';
-
-import 'test.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({Key? key}) : super(key: key);
@@ -79,7 +76,7 @@ class ProductScreen extends StatelessWidget {
                             ),
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(

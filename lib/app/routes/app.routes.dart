@@ -47,7 +47,7 @@ class AppRouter {
       case productRoute:
         {
           return MaterialPageRoute(
-            builder: (_) => const ProductScreen(),
+            builder: (_) => ProductScreen(),
           );
         }
       case loginRoute:
