@@ -1,13 +1,12 @@
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
-import 'package:scarvs/core/models/product.model.dart';
-import 'package:scarvs/presentation/screens/ProductsScreen/products.screen.dart';
 import 'package:scarvs/presentation/screens/cartScreen/cart.screen.dart';
 import 'package:scarvs/presentation/screens/favouriteScreen/favourite.screen.dart';
 import 'package:scarvs/presentation/screens/homeScreen/home.screen.dart';
 import 'package:scarvs/presentation/screens/loginScreen/login.view.dart';
 import 'package:scarvs/presentation/screens/onBoardingScreen/onBoarding.screen.dart';
 import 'package:scarvs/presentation/screens/productDetailScreen/product.detail.screen.dart';
+import 'package:scarvs/presentation/screens/productsScreen/products.screen.dart';
 import 'package:scarvs/presentation/screens/profileScreen/profile.screen.dart';
 import 'package:scarvs/presentation/screens/searchScreen/search.screen.dart';
 import 'package:scarvs/presentation/screens/signUpScreen/signup.screen.dart';
