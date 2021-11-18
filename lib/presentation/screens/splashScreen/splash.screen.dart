@@ -59,13 +59,18 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'Scarvs',
-              style: TextStyle(
-                color: themeFlag ? AppColors.creamColor : AppColors.mirage,
-                fontFamily: AppFonts.contax,
-                fontSize: 50.0,
-              ),
+            // Text(
+            //   'Scarvs',
+            //   style: TextStyle(
+            //     color: themeFlag ? AppColors.creamColor : AppColors.mirage,
+            //     fontFamily: AppFonts.contax,
+            //     fontSize: 50.0,
+            //   ),
+            // ),
+            Container(
+              height: 500,
+              width: 500,
+              child: Image.asset('assets/images/shoes/logo.png'),
             ),
           ],
         ),

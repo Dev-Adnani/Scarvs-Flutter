@@ -29,6 +29,15 @@ class CustomTextWidget {
     );
   }
 
+  static bodyTextB4({required Color color}) {
+    return TextStyle(
+      fontFamily: AppFonts.contax,
+      color: color,
+      fontWeight: FontWeight.w900,
+      fontSize: 14.0,
+    );
+  }
+
   static bodyText1({required Color color}) {
     return TextStyle(
       fontFamily: AppFonts.contax,

@@ -28,23 +28,3 @@ void main() {
     expect(find.text('1'), findsOneWidget);
   });
 }
-
-
-// Container(
-//         child: Consumer<ProductNotifier>(
-//           builder: (context, notifier, _) {
-//             return FutureBuilder(
-//                 future: notifier.fetchProducts(context: context),
-//                 builder: (context, snapshot) {
-//                   if (snapshot.connectionState == ConnectionState.waiting) {
-//                     return Center(child: CircularProgressIndicator());
-//                   } else if (!snapshot.hasData) {
-//                     return Center(child: Text('No Data'));
-//                   } else {
-//                     var _snapshot = snapshot.data as List;
-//                     return ProductsList(snapshot: _snapshot);
-//                   }
-//                 });
-//           },
-//         ),
-//       ),
