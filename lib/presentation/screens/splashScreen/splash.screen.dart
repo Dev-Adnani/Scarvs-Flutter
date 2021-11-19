@@ -1,12 +1,10 @@
 import 'dart:async';
-
 import 'package:cache_manager/cache_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/constants/app.keys.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
-import 'package:scarvs/app/constants/app.fonts.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 
 class SplashScreen extends StatefulWidget {

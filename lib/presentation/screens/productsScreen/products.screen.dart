@@ -4,7 +4,9 @@ import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/core/notifiers/product.notifier.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
-import 'package:scarvs/presentation/screens/productsScreen/bottom.widget.dart';
+import 'package:scarvs/presentation/screens/productsScreen/brands.widget.dart';
+import 'package:scarvs/presentation/screens/productsScreen/recommended.widget.dart';
+import 'package:scarvs/presentation/shimmer/shimmer.effects.dart';
 import 'package:scarvs/presentation/widgets/custom.text.widget.dart';
 import 'package:scarvs/presentation/widgets/dimensions.dart';
 
@@ -114,6 +116,8 @@ class ProductScreen extends StatelessWidget {
                       ),
                     ),
                     vSizedBox2,
+                    BrandWidget(),
+                    vSizedBox2,
                     Text(
                       'Shoes For You',
                       style: CustomTextWidget.bodyTextB2(
@@ -123,8 +127,8 @@ class ProductScreen extends StatelessWidget {
                     ),
                     vSizedBox1,
                     Container(
-                      height: 250,
-                      width: 400,
+                      height: 170,
+                      width: MediaQuery.of(context).size.width,
                       child: Consumer<ProductNotifier>(
                         builder: (context, notifier, _) {
                           return FutureBuilder(
@@ -132,10 +136,12 @@ class ProductScreen extends StatelessWidget {
                               builder: (context, snapshot) {
                                 if (snapshot.connectionState ==
                                     ConnectionState.waiting) {
-                                  return Center(
-                                      child: CircularProgressIndicator());
+                                  return ShimmerEffects.loadShimmer(
+                                      context: context);
                                 } else if (!snapshot.hasData) {
-                                  return Center(child: Text('No Data'));
+                                  return Center(
+                                    child: Text('No Data'),
+                                  );
                                 } else {
                                   var _snapshot = snapshot.data as List;
                                   return ProductsList(
