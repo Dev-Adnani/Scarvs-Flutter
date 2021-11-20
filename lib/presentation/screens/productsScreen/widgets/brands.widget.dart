@@ -4,7 +4,7 @@ import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:scarvs/presentation/widgets/custom.text.widget.dart';
-import 'package:scarvs/presentation/widgets/dimensions.dart';
+import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
 class BrandWidget extends StatelessWidget {
   @override
@@ -33,15 +33,11 @@ class BrandWidget extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: Container(
-            height: 100,
-            width: 100,
+            height: 120,
+            width: 120,
             child: Column(
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  radius: 40,
-                  child: Image.asset(images),
-                ),
+                Image.asset(images),
                 vSizedBox1,
                 Text(
                   text,
@@ -74,7 +70,7 @@ class BrandWidget extends StatelessWidget {
             child: ListView.builder(
               shrinkWrap: false,
               scrollDirection: Axis.horizontal,
-              physics: NeverScrollableScrollPhysics(),
+              physics: ScrollPhysics(),
               itemCount: _categories.length,
               itemBuilder: (BuildContext context, int index) {
                 return showBrands(

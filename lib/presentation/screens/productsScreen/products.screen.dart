@@ -4,11 +4,11 @@ import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/core/notifiers/product.notifier.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
-import 'package:scarvs/presentation/screens/productsScreen/brands.widget.dart';
-import 'package:scarvs/presentation/screens/productsScreen/recommended.widget.dart';
-import 'package:scarvs/presentation/shimmer/shimmer.effects.dart';
+import 'package:scarvs/presentation/screens/productsScreen/widgets/brands.widget.dart';
+import 'package:scarvs/presentation/screens/productsScreen/widgets/recommended.widget.dart';
+import 'package:scarvs/presentation/widgets/shimmer.effects.dart';
 import 'package:scarvs/presentation/widgets/custom.text.widget.dart';
-import 'package:scarvs/presentation/widgets/dimensions.dart';
+import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({Key? key}) : super(key: key);
@@ -65,36 +65,30 @@ class ProductScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'New Items With ',
+                              'Pamper Your Feet ',
                               style: CustomTextWidget.bodyTextB2(
-                                color: themeFlag
-                                    ? AppColors.creamColor
-                                    : AppColors.mirage,
-                              ),
+                                  color: AppColors.creamColor),
                             ),
                             Text(
-                              'Free Shipping',
+                              'With our shoes',
                               style: CustomTextWidget.bodyTextB3(
-                                color: themeFlag
-                                    ? AppColors.creamColor
-                                    : AppColors.mirage,
-                              ),
+                                  color: AppColors.creamColor),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                      primary: AppColors.creamColor,
-                                      enableFeedback: true,
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                        vertical: 2,
-                                      ),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
-                                      )),
+                                    primary: AppColors.creamColor,
+                                    enableFeedback: true,
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: 2,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                  ),
                                   onPressed: () {},
                                   child: Text(
                                     'Check',
@@ -116,6 +110,9 @@ class ProductScreen extends StatelessWidget {
                       ),
                     ),
                     vSizedBox2,
+                    Divider(
+                      color: AppColors.creamColor,
+                    ),
                     BrandWidget(),
                     vSizedBox2,
                     Text(
@@ -127,28 +124,28 @@ class ProductScreen extends StatelessWidget {
                     ),
                     vSizedBox1,
                     Container(
-                      height: 170,
+                      height: 200,
                       width: MediaQuery.of(context).size.width,
                       child: Consumer<ProductNotifier>(
                         builder: (context, notifier, _) {
                           return FutureBuilder(
-                              future: notifier.fetchProducts(context: context),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return ShimmerEffects.loadShimmer(
-                                      context: context);
-                                } else if (!snapshot.hasData) {
-                                  return Center(
-                                    child: Text('No Data'),
-                                  );
-                                } else {
-                                  var _snapshot = snapshot.data as List;
-                                  return ProductsList(
-                                      snapshot: _snapshot,
-                                      themeFlag: themeFlag);
-                                }
-                              });
+                            future: notifier.fetchProducts(context: context),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return ShimmerEffects.loadShimmer(
+                                    context: context);
+                              } else if (!snapshot.hasData) {
+                                return Center(
+                                  child: Text('No Data'),
+                                );
+                              } else {
+                                var _snapshot = snapshot.data as List;
+                                return ProductsList(
+                                    snapshot: _snapshot, themeFlag: themeFlag);
+                              }
+                            },
+                          );
                         },
                       ),
                     )

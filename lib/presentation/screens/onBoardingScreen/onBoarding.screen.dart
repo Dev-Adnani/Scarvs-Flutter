@@ -1,10 +1,9 @@
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
-import 'package:scarvs/presentation/widgets/dimensions.dart';
+import 'package:scarvs/presentation/screens/onBoardingScreen/widget/onBoarding.widget.dart';
 import 'package:scarvs/core/models/onBoarding.model.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -13,19 +12,19 @@ class OnBoardingScreen extends StatefulWidget {
   final List<OnBoardingModel> cards = [
     OnBoardingModel(
       image: AppAssets.onBoardingOne,
-      title: 'Delivering Happiness',
+      title: "Happily Serving Under Customer's Feet",
       textColor: Colors.white,
       bgColor: AppColors.mirage,
     ),
     OnBoardingModel(
       image: AppAssets.onBoardingTwo,
-      title: "Customer Support 24*7",
+      title: "World Class Customer Support On Your Fingertips",
       bgColor: AppColors.creamColor,
       textColor: AppColors.mirage,
     ),
     OnBoardingModel(
       image: AppAssets.onBoardingThree,
-      title: "Happily Serving Customer's World Wide Through Devices",
+      title: "Pay Us With Card For Heavy Discount's",
       bgColor: AppColors.rawSienna,
       textColor: Colors.white,
     ),
@@ -54,57 +53,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         onFinish: () {
           Navigator.of(context).pushReplacementNamed(AppRouter.splashRoute);
         },
-      ),
-    );
-  }
-}
-
-class PageCard extends StatelessWidget {
-  final OnBoardingModel card;
-
-  const PageCard({
-    Key? key,
-    required this.card,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 30.0,
-      ),
-      child: Column(
-        children: [
-          hSizedBox4,
-          _buildPicture(context),
-          hSizedBox3,
-          _buildText(context),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPicture(
-    BuildContext context, {
-    double size = 380,
-  }) {
-    return Container(
-      width: size,
-      height: size,
-      margin: const EdgeInsets.only(
-        top: 140,
-      ),
-      child: Lottie.asset(card.image!),
-    );
-  }
-
-  Widget _buildText(BuildContext context) {
-    return Text(
-      card.title!,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        color: card.textColor,
-        fontSize: 22,
       ),
     );
   }

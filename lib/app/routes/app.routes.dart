@@ -54,15 +54,21 @@ class AppRouter {
         }
       case loginRoute:
         {
-          return MaterialPageRoute(builder: (_) => LoginScreen());
+          return MaterialPageRoute(
+            builder: (_) => LoginScreen(),
+          );
         }
       case signUpRoute:
         {
-          return MaterialPageRoute(builder: (_) => SignUpScreen());
+          return MaterialPageRoute(
+            builder: (_) => SignUpScreen(),
+          );
         }
       case favRoute:
         {
-          return MaterialPageRoute(builder: (_) => FavScreen());
+          return MaterialPageRoute(
+            builder: (_) => FavScreen(),
+          );
         }
       case prodDetailRoute:
         {
@@ -75,15 +81,21 @@ class AppRouter {
         }
       case cartRoute:
         {
-          return MaterialPageRoute(builder: (_) => CartScreen());
+          return MaterialPageRoute(
+            builder: (_) => CartScreen(),
+          );
         }
       case searchRoute:
         {
-          return MaterialPageRoute(builder: (_) => SearchScreen());
+          return MaterialPageRoute(
+            builder: (_) => SearchScreen(),
+          );
         }
       case profileRoute:
         {
-          return MaterialPageRoute(builder: (_) => ProfileScreen());
+          return MaterialPageRoute(
+            builder: (_) => ProfileScreen(),
+          );
         }
     }
   }

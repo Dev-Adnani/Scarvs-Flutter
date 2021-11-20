@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
-import 'package:scarvs/app/constants/app.fonts.dart';
-import 'package:scarvs/presentation/widgets/dimensions.dart';
+import 'package:scarvs/presentation/screens/signUpScreen/widget/welcome.signup.widget.dart';
+import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 import 'package:scarvs/core/notifiers/authentication.notifer.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:scarvs/presentation/widgets/custom.animated.container.dart';
@@ -41,91 +41,7 @@ class SignUpScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            vSizedBox4,
-            vSizedBox1,
-            Padding(
-              padding: const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
-              child: RichText(
-                text: TextSpan(
-                  text: 'Hey There 😲',
-                  style: TextStyle(
-                    color: themeFlag ? AppColors.creamColor : AppColors.mirage,
-                    fontWeight: FontWeight.w900,
-                    fontFamily: AppFonts.contax,
-                    fontSize: 35.0,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Welcome To ',
-                          style: TextStyle(
-                            color: themeFlag
-                                ? AppColors.creamColor
-                                : AppColors.mirage,
-                            fontFamily: AppFonts.contax,
-                            fontSize: 28.0,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                        TextSpan(
-                          text: 'Scarvs ! 🛒  ',
-                          style: TextStyle(
-                            color: themeFlag
-                                ? AppColors.creamColor
-                                : AppColors.mirage,
-                            fontFamily: AppFonts.contax,
-                            fontSize: 28.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            vSizedBox2,
-            Padding(
-              padding: const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Also Don't Worry ",
-                          style: TextStyle(
-                            color: themeFlag
-                                ? AppColors.creamColor
-                                : AppColors.mirage,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12.0,
-                          ),
-                        ),
-                        TextSpan(
-                          text: "We Don't Sell User Data",
-                          style: TextStyle(
-                            color: themeFlag
-                                ? AppColors.creamColor
-                                : AppColors.mirage,
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            vSizedBox2,
+            welcomeTextSignup(themeFlag: themeFlag),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -208,7 +124,7 @@ class SignUpScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  vSizedBox2,
+                  vSizedBox1,
                   MaterialButton(
                     height: MediaQuery.of(context).size.height * 0.05,
                     minWidth: MediaQuery.of(context).size.width * 0.8,

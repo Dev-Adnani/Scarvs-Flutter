@@ -3,6 +3,7 @@ import 'package:cache_manager/cache_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
+import 'package:scarvs/app/constants/app.fonts.dart';
 import 'package:scarvs/app/constants/app.keys.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
@@ -57,18 +58,13 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Text(
-            //   'Scarvs',
-            //   style: TextStyle(
-            //     color: themeFlag ? AppColors.creamColor : AppColors.mirage,
-            //     fontFamily: AppFonts.contax,
-            //     fontSize: 50.0,
-            //   ),
-            // ),
-            Container(
-              height: 500,
-              width: 500,
-              child: Image.asset('assets/images/shoes/logo.png'),
+            Text(
+              'Scarvs',
+              style: TextStyle(
+                color: themeFlag ? AppColors.creamColor : AppColors.mirage,
+                fontFamily: AppFonts.contax,
+                fontSize: 50.0,
+              ),
             ),
           ],
         ),
