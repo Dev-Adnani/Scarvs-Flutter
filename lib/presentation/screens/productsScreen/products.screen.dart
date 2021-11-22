@@ -86,7 +86,7 @@ class ProductScreen extends StatelessWidget {
                                       vertical: 2,
                                     ),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
+                                      borderRadius: BorderRadius.circular(5.0),
                                     ),
                                   ),
                                   onPressed: () {},
@@ -110,9 +110,6 @@ class ProductScreen extends StatelessWidget {
                       ),
                     ),
                     vSizedBox2,
-                    Divider(
-                      color: AppColors.creamColor,
-                    ),
                     BrandWidget(),
                     vSizedBox2,
                     Text(
@@ -141,8 +138,11 @@ class ProductScreen extends StatelessWidget {
                                 );
                               } else {
                                 var _snapshot = snapshot.data as List;
-                                return ProductsList(
-                                    snapshot: _snapshot, themeFlag: themeFlag);
+                                return productForYou(
+                                  snapshot: _snapshot,
+                                  themeFlag: themeFlag,
+                                  context: context,
+                                );
                               }
                             },
                           );

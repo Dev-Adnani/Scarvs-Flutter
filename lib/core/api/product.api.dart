@@ -17,29 +17,19 @@ class ProductAPI {
       headers: headers,
     );
     final body = response.body;
-    final statusCode = response.statusCode;
-
-    if (statusCode == 200) {
-      return body;
-    } else {
-      return body;
-    }
+    return body;
   }
 
-  Future fetchProductDetail({required String id}) async {
+  Future fetchProductDetail({required dynamic id}) async {
     var subUrl = '/product/details/$id';
     final Uri uri = Uri.parse(ApiRoutes.baseurl + subUrl);
+    print(uri);
+
     final http.Response response = await client.get(
       uri,
       headers: headers,
     );
     final body = response.body;
-    final statusCode = response.statusCode;
-
-    if (statusCode == 200) {
-      return body;
-    } else {
-      return body;
-    }
+    return body;
   }
 }

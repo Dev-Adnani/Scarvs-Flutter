@@ -1,38 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
+import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/models/product.model.dart';
+import 'package:scarvs/presentation/screens/productDetailScreen/product.detail.screen.dart';
 import 'package:scarvs/presentation/widgets/custom.text.widget.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
-class ProductsList extends StatelessWidget {
-  final dynamic snapshot;
-  final bool themeFlag;
-
-  ProductsList({required this.snapshot, required this.themeFlag});
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: ScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: snapshot.length,
-      scrollDirection: Axis.horizontal,
-      itemBuilder: (context, index) {
-        ProductData _prod = snapshot[index];
-        return Padding(
-          padding: const EdgeInsets.only(left: 8.0, right: 16.0),
+Widget productForYou(
+    {required snapshot, required themeFlag, required BuildContext context}) {
+  return ListView.builder(
+    physics: ScrollPhysics(),
+    shrinkWrap: true,
+    itemCount: snapshot.length,
+    scrollDirection: Axis.horizontal,
+    itemBuilder: (context, index) {
+      ProductData prod = snapshot[index];
+      return GestureDetector(
+        onTap: () {
+          var productId = prod.productName;
+          print(productId);
+          Navigator.of(context).pushNamed(
+            AppRouter.prodDetailRoute,
+            arguments: ProductDetailsArgs(id: productId),
+          );
+        },
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Container(
-            height: 150,
-            width: 150,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   height: 150,
                   width: 150,
-                  child: Image.network(_prod.productImage),
+                  child: Image.network(prod.productImage),
                 ),
                 vSizedBox1,
                 Text(
-                  _prod.productName,
+                  prod.productName,
+                  style: CustomTextWidget.bodyText3(
+                    color: themeFlag ? AppColors.creamColor : AppColors.mirage,
+                  ),
+                ),
+                Text(
+                  '₹ ${prod.productPrice.toString()}',
                   style: CustomTextWidget.bodyText3(
                     color: themeFlag ? AppColors.creamColor : AppColors.mirage,
                   ),
@@ -40,8 +52,8 @@ class ProductsList extends StatelessWidget {
               ],
             ),
           ),
-        );
-      },
-    );
-  }
+        ),
+      );
+    },
+  );
 }

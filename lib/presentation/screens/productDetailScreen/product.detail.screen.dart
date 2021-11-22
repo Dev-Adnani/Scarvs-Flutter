@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 
-class ProductDetail extends StatelessWidget {
-  final dynamic argument;
-  const ProductDetail({Key? key, this.argument}) : super(key: key);
+class ProductDetail extends StatefulWidget {
+  final ProductDetailsArgs productDetailsArguements;
+  const ProductDetail({required this.productDetailsArguements});
+
+  @override
+  State<ProductDetail> createState() => _ProductDetailState();
+}
+
+class _ProductDetailState extends State<ProductDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('Test'),
+        child: Text(widget.productDetailsArguements.id.toString()),
       ),
     );
   }
+}
+
+class ProductDetailsArgs {
+  final dynamic id;
+  const ProductDetailsArgs({required this.id});
 }

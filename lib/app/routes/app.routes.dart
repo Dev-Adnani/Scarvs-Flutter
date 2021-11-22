@@ -72,11 +72,13 @@ class AppRouter {
         }
       case prodDetailRoute:
         {
-          var prodArgument = settings.arguments;
           return MaterialPageRoute(
-            builder: (_) => ProductDetail(
-              argument: prodArgument,
+            builder: (context) => ProductDetail(
+              productDetailsArguements: ModalRoute.of(context)!
+                  .settings
+                  .arguments as ProductDetailsArgs,
             ),
+            settings: settings,
           );
         }
       case cartRoute:

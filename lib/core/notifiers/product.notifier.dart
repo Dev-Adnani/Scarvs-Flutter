@@ -33,7 +33,7 @@ class ProductNotifier with ChangeNotifier {
   }
 
   Future fetchProductDetail(
-      {required BuildContext context, required String id}) async {
+      {required BuildContext context, required dynamic id}) async {
     try {
       var products = await _productAPI.fetchProductDetail(id: id);
       var response = ProductModel.fromJson(jsonDecode(products));
