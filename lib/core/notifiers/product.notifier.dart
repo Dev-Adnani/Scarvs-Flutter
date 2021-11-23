@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:scarvs/core/api/product.api.dart';
+import 'package:scarvs/core/models/productID.model.dart';
 import 'package:scarvs/core/models/product.model.dart';
 import 'package:scarvs/core/utils/snackbar.util.dart';
 
@@ -36,7 +37,7 @@ class ProductNotifier with ChangeNotifier {
       {required BuildContext context, required dynamic id}) async {
     try {
       var products = await _productAPI.fetchProductDetail(id: id);
-      var response = ProductModel.fromJson(jsonDecode(products));
+      var response = ProductIdModel.fromJson(jsonDecode(products));
 
       final _productBody = response.data;
       final _productFilled = response.filled;

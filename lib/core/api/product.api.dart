@@ -23,7 +23,6 @@ class ProductAPI {
   Future fetchProductDetail({required dynamic id}) async {
     var subUrl = '/product/details/$id';
     final Uri uri = Uri.parse(ApiRoutes.baseurl + subUrl);
-    print(uri);
 
     final http.Response response = await client.get(
       uri,

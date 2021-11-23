@@ -23,7 +23,7 @@ class AppRouter {
   static const String favRoute = "/fav";
   static const String searchRoute = "/search";
   static const String profileRoute = "/profile";
-  static const String prodDetailRoute = "/prodDetail";
+  static const String prodDetailRoute = "/productDetail";
 
   static Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/constants/app.fonts.dart';
-import 'package:scarvs/presentation/widgets/custom.text.widget.dart';
+import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
 Widget welcomeTextSignup({required bool themeFlag}) {

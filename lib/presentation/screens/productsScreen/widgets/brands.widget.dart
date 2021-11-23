@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
-import 'package:scarvs/presentation/widgets/custom.text.widget.dart';
+import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
 class BrandWidget extends StatelessWidget {

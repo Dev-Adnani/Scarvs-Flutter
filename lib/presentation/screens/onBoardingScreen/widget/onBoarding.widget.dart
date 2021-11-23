@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:scarvs/core/models/onBoarding.model.dart';
-import 'package:scarvs/presentation/widgets/custom.text.widget.dart';
+import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
 class PageCard extends StatelessWidget {

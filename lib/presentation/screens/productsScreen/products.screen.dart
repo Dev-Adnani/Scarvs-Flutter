@@ -7,7 +7,7 @@ import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:scarvs/presentation/screens/productsScreen/widgets/brands.widget.dart';
 import 'package:scarvs/presentation/screens/productsScreen/widgets/recommended.widget.dart';
 import 'package:scarvs/presentation/widgets/shimmer.effects.dart';
-import 'package:scarvs/presentation/widgets/custom.text.widget.dart';
+import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
 class ProductScreen extends StatelessWidget {

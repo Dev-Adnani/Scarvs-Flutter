@@ -3,7 +3,7 @@ import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/models/product.model.dart';
 import 'package:scarvs/presentation/screens/productDetailScreen/product.detail.screen.dart';
-import 'package:scarvs/presentation/widgets/custom.text.widget.dart';
+import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
 Widget productForYou(
@@ -17,7 +17,7 @@ Widget productForYou(
       ProductData prod = snapshot[index];
       return GestureDetector(
         onTap: () {
-          var productId = prod.productName;
+          var productId = prod.productId;
           print(productId);
           Navigator.of(context).pushNamed(
             AppRouter.prodDetailRoute,
