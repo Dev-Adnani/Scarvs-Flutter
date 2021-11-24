@@ -3,6 +3,7 @@ class AppAssets {
   static const String onBoardingTwo = 'assets/animations/onBoardingTwo.json';
   static const String onBoardingThree =
       'assets/animations/onBoardingThree.json';
+  static const String error = 'assets/animations/error.json';
 
   static const String homeJordan = 'assets/images/shoes/jordan.png';
   static const String diamondWhite = 'assets/images/misc/diamondWhite.png';

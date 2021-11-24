@@ -134,7 +134,14 @@ class ProductScreen extends StatelessWidget {
                                     context: context);
                               } else if (!snapshot.hasData) {
                                 return Center(
-                                  child: Text('No Data'),
+                                  child: Text(
+                                    'Some Error Occurred...',
+                                    style: CustomTextWidget.bodyTextUltra(
+                                      color: themeFlag
+                                          ? AppColors.creamColor
+                                          : AppColors.mirage,
+                                    ),
+                                  ),
                                 );
                               } else {
                                 var _snapshot = snapshot.data as List;

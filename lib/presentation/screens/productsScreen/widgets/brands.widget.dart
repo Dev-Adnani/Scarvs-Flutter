@@ -34,7 +34,7 @@ class BrandWidget extends StatelessWidget {
         onTap: () {
           Navigator.of(context).pushNamed(
             AppRouter.categoryRoute,
-            arguments: CategoryScreenArgs(categoryName: 'Nike'),
+            arguments: CategoryScreenArgs(categoryName: text),
           );
         },
         child: Padding(

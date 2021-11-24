@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/core/models/productID.model.dart';
 import 'package:scarvs/core/notifiers/product.notifier.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:scarvs/presentation/screens/productDetailScreen/widget/ui.detail.dart';
+import 'package:scarvs/presentation/widgets/custom.loader.dart';
 
 class ProductDetail extends StatefulWidget {
   final ProductDetailsArgs productDetailsArguements;
@@ -34,11 +36,20 @@ class _ProductDetailState extends State<ProductDetail> {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: Text('Wait For Data'),
+                    child: customLoader(
+                        context: context,
+                        themeFlag: themeFlag,
+                        lottieAsset: AppAssets.onBoardingOne,
+                        text: 'Please Wait Till It Loads'),
                   );
                 } else if (!snapshot.hasData) {
                   return Center(
-                    child: Text('No Data'),
+                    child: customLoader(
+                      context: context,
+                      themeFlag: themeFlag,
+                      text: 'Oops Some Error Occurred',
+                      lottieAsset: AppAssets.error,
+                    ),
                   );
                 } else {
                   var _snapshot = snapshot.data as SingleProductData;

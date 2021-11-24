@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/models/productID.model.dart';
 import 'package:scarvs/presentation/screens/productDetailScreen/widget/select.size.dart';
 import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
-import 'package:scarvs/presentation/widgets/custom.design.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
@@ -36,15 +36,12 @@ Widget productUI({
           Stack(
             alignment: Alignment.center,
             children: [
-              ClipPath(
-                clipper: CustomDesign(),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  decoration: BoxDecoration(
-                    color: themeFlag ? Colors.white70 : AppColors.mirage,
-                  ),
-                ),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.3,
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: themeFlag
+                    ? Image.asset(AppAssets.diamondWhite)
+                    : Image.asset(AppAssets.diamondBlack),
               ),
               Container(
                 height: MediaQuery.of(context).size.height * 0.22,

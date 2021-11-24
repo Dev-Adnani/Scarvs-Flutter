@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scarvs/app/constants/app.assets.dart';
+import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/notifiers/product.notifier.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:scarvs/presentation/screens/categoryScreen/widgets/category.widget.dart';
 import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
+import 'package:scarvs/presentation/widgets/custom.text.style.dart';
+import 'package:scarvs/presentation/widgets/custom.loader.dart';
+import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
 class CategoryScreen extends StatelessWidget {
   final CategoryScreenArgs categoryScreenArgs;
@@ -18,17 +23,35 @@ class CategoryScreen extends StatelessWidget {
     var themeFlag = _themeNotifier.darkTheme;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: themeFlag ? AppColors.mirage : AppColors.creamColor,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomBackButton(
-              route: AppRouter.homeRoute,
-              themeFlag: themeFlag,
+            Container(
+              height: MediaQuery.of(context).size.height * 0.05,
+              child: Row(
+                children: [
+                  CustomBackButton(
+                    route: AppRouter.homeRoute,
+                    themeFlag: themeFlag,
+                  ),
+                  Center(
+                    child: Text(
+                      categoryScreenArgs.categoryName,
+                      style: CustomTextWidget.bodyTextB2(
+                        color:
+                            themeFlag ? AppColors.creamColor : AppColors.mirage,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
+            vSizedBox2,
             Column(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.85,
                   width: MediaQuery.of(context).size.width,
                   child: Consumer<ProductNotifier>(
                     builder: (context, notifier, _) {
@@ -40,12 +63,17 @@ class CategoryScreen extends StatelessWidget {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
-                            return Center(
-                              child: Text('Wait For Data'),
-                            );
+                            return customLoader(
+                                context: context,
+                                themeFlag: themeFlag,
+                                lottieAsset: AppAssets.onBoardingOne,
+                                text: 'Please Wait Till It Loads');
                           } else if (!snapshot.hasData) {
-                            return Center(
-                              child: Text('No Data'),
+                            return customLoader(
+                              context: context,
+                              themeFlag: themeFlag,
+                              text: 'Oops Some Error Occurred',
+                              lottieAsset: AppAssets.error,
                             );
                           } else {
                             var _snapshot = snapshot.data as List;
