@@ -113,7 +113,7 @@ class ProductScreen extends StatelessWidget {
                     BrandWidget(),
                     vSizedBox2,
                     Text(
-                      'Shoes For You',
+                      'Exclusive Shoes',
                       style: CustomTextWidget.bodyTextB2(
                         color:
                             themeFlag ? AppColors.creamColor : AppColors.mirage,

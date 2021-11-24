@@ -20,11 +20,11 @@ class BrandWidget extends StatelessWidget {
       "Nike",
     ];
     List<String> _categoriesImages = [
-      AppAssets.homeJordan,
-      AppAssets.homeJordanT,
-      AppAssets.homeJordan,
-      AppAssets.homeJordanT,
-      AppAssets.homeJordan
+      AppAssets.brandJordan,
+      AppAssets.brandAdidas,
+      AppAssets.brandPuma,
+      AppAssets.brandReebok,
+      AppAssets.brandNike
     ];
 
     showBrands(String text, String images) {
@@ -32,21 +32,21 @@ class BrandWidget extends StatelessWidget {
         onTap: () {},
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Container(
-            height: 120,
-            width: 120,
-            child: Column(
-              children: [
-                Image.asset(images),
-                vSizedBox1,
-                Text(
-                  text,
-                  style: CustomTextWidget.bodyText2(
-                    color: themeFlag ? AppColors.creamColor : AppColors.mirage,
-                  ),
-                )
-              ],
-            ),
+          child: Column(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.14,
+                width: MediaQuery.of(context).size.width * 0.38,
+                child: Image.network(images),
+              ),
+              vSizedBox1,
+              Text(
+                text,
+                style: CustomTextWidget.bodyText2(
+                  color: themeFlag ? AppColors.creamColor : AppColors.mirage,
+                ),
+              )
+            ],
           ),
         ),
       );
@@ -65,7 +65,7 @@ class BrandWidget extends StatelessWidget {
           ),
           vSizedBox2,
           Container(
-            height: 120,
+            height: MediaQuery.of(context).size.height * 0.18,
             width: MediaQuery.of(context).size.width,
             child: ListView.builder(
               shrinkWrap: false,

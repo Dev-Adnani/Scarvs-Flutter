@@ -38,6 +38,15 @@ class CustomTextWidget {
     );
   }
 
+  static bodyTextUltra({required Color color}) {
+    return TextStyle(
+      fontFamily: AppFonts.contax,
+      color: color,
+      fontWeight: FontWeight.bold,
+      fontSize: 28.0,
+    );
+  }
+
   static bodyText1({required Color color}) {
     return TextStyle(
       fontFamily: AppFonts.contax,
