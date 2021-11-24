@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
+import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
+import 'package:scarvs/presentation/screens/categoryScreen/category.screen.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
@@ -29,7 +31,12 @@ class BrandWidget extends StatelessWidget {
 
     showBrands(String text, String images) {
       return GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).pushNamed(
+            AppRouter.categoryRoute,
+            arguments: CategoryScreenArgs(categoryName: 'Nike'),
+          );
+        },
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: Column(

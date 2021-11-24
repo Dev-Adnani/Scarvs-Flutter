@@ -45,6 +45,8 @@ flutter:
   assets:
     - assets/animations/
     - assets/images/shoes/
+    - assets/images/misc/
+    
   fonts:
     - family: Contax
       fonts:

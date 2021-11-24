@@ -31,4 +31,17 @@ class ProductAPI {
     final body = response.body;
     return body;
   }
+
+  Future fetchProductCategory({required dynamic categoryName}) async {
+    var subUrl = '/product/category/$categoryName';
+    final Uri uri = Uri.parse(ApiRoutes.baseurl + subUrl);
+    print(uri);
+
+    final http.Response response = await client.get(
+      uri,
+      headers: headers,
+    );
+    final body = response.body;
+    return body;
+  }
 }

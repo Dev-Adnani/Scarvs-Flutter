@@ -4,15 +4,17 @@ import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/models/product.model.dart';
 import 'package:scarvs/presentation/screens/productDetailScreen/product.detail.screen.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
-import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
-Widget productForYou(
+Widget categoryWidget(
     {required snapshot, required themeFlag, required BuildContext context}) {
-  return ListView.builder(
+  return GridView.builder(
     physics: ScrollPhysics(),
     shrinkWrap: true,
+    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: 2,
+      childAspectRatio: (3 / 2),
+    ),
     itemCount: snapshot.length,
-    scrollDirection: Axis.horizontal,
     itemBuilder: (context, index) {
       ProductData prod = snapshot[index];
       return GestureDetector(
@@ -25,16 +27,24 @@ Widget productForYou(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.red,
+                width: 5.0,
+              ),
+              color: AppColors.rawSienna,
+            ),
+            height: MediaQuery.of(context).size.height * 0.20,
+            width: MediaQuery.of(context).size.width * 0.40,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 150,
-                  width: 150,
+                  height: MediaQuery.of(context).size.height * 0.09,
+                  width: MediaQuery.of(context).size.width * 0.35,
                   child: Image.network(prod.productImage),
                 ),
-                vSizedBox1,
                 Text(
                   prod.productName,
                   style: CustomTextWidget.bodyText3(
@@ -42,7 +52,7 @@ Widget productForYou(
                   ),
                 ),
                 Text(
-                  '₹ ${prod.productPrice.toString()}',
+                  '₹ ${prod.productPrice}',
                   style: CustomTextWidget.bodyText3(
                     color: themeFlag ? AppColors.creamColor : AppColors.mirage,
                   ),

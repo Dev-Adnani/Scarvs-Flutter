@@ -5,6 +5,8 @@ class AppAssets {
       'assets/animations/onBoardingThree.json';
 
   static const String homeJordan = 'assets/images/shoes/jordan.png';
+  static const String diamondWhite = 'assets/images/misc/diamondWhite.png';
+  static const String diamondBlack = 'assets/images/misc/diamondBlack.png';
 
   static const String brandJordan =
       'https://res.cloudinary.com/devadnani/image/upload/v1637739611/Scarvs%20Main/Products/jordan_wd5gie.png';

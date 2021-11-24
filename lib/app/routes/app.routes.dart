@@ -1,6 +1,7 @@
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:scarvs/presentation/screens/cartScreen/cart.screen.dart';
+import 'package:scarvs/presentation/screens/categoryScreen/category.screen.dart';
 import 'package:scarvs/presentation/screens/favouriteScreen/favourite.screen.dart';
 import 'package:scarvs/presentation/screens/homeScreen/home.screen.dart';
 import 'package:scarvs/presentation/screens/loginScreen/login.view.dart';
@@ -23,6 +24,7 @@ class AppRouter {
   static const String favRoute = "/fav";
   static const String searchRoute = "/search";
   static const String profileRoute = "/profile";
+  static const String categoryRoute = "/category";
   static const String prodDetailRoute = "/productDetail";
 
   static Route? generateRoute(RouteSettings settings) {
@@ -97,6 +99,16 @@ class AppRouter {
         {
           return MaterialPageRoute(
             builder: (_) => ProfileScreen(),
+          );
+        }
+      case categoryRoute:
+        {
+          return MaterialPageRoute(
+            builder: (context) => CategoryScreen(
+              categoryScreenArgs: ModalRoute.of(context)!.settings.arguments
+                  as CategoryScreenArgs,
+            ),
+            settings: settings,
           );
         }
     }
