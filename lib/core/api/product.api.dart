@@ -35,7 +35,18 @@ class ProductAPI {
   Future fetchProductCategory({required dynamic categoryName}) async {
     var subUrl = '/product/category/$categoryName';
     final Uri uri = Uri.parse(ApiRoutes.baseurl + subUrl);
-    print(uri);
+
+    final http.Response response = await client.get(
+      uri,
+      headers: headers,
+    );
+    final body = response.body;
+    return body;
+  }
+
+  Future searchProduct({required dynamic productName}) async {
+    var subUrl = '/product/search/$productName';
+    final Uri uri = Uri.parse(ApiRoutes.baseurl + subUrl);
 
     final http.Response response = await client.get(
       uri,

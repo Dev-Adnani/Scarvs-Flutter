@@ -75,7 +75,9 @@ class CategoryScreen extends StatelessWidget {
                             );
                           } else {
                             var _snapshot = snapshot.data as List;
-                            return categoryWidget(
+                            return showDataInGrid(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.20,
                                 snapshot: _snapshot,
                                 themeFlag: themeFlag,
                                 context: context);

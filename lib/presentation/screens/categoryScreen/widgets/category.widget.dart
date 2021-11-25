@@ -5,8 +5,11 @@ import 'package:scarvs/core/models/product.model.dart';
 import 'package:scarvs/presentation/screens/productDetailScreen/product.detail.screen.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 
-Widget categoryWidget(
-    {required snapshot, required themeFlag, required BuildContext context}) {
+Widget showDataInGrid(
+    {required snapshot,
+    required themeFlag,
+    required BuildContext context,
+    required double height}) {
   return Padding(
     padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
     child: GridView.builder(
@@ -22,17 +25,17 @@ Widget categoryWidget(
       itemBuilder: (context, index) {
         ProductData prod = snapshot[index];
         return _showProducts(
-            context: context, prod: prod, themeFlag: themeFlag);
+            context: context, prod: prod, themeFlag: themeFlag, height: height);
       },
     ),
   );
 }
 
-Widget _showProducts({
-  required BuildContext context,
-  required ProductData prod,
-  required bool themeFlag,
-}) {
+Widget _showProducts(
+    {required BuildContext context,
+    required ProductData prod,
+    required bool themeFlag,
+    required double height}) {
   return Container(
     child: Card(
       shape: RoundedRectangleBorder(
@@ -62,8 +65,9 @@ Widget _showProducts({
                 topRight: Radius.circular(10),
               ),
               child: Container(
-                  height: MediaQuery.of(context).size.height * 0.20,
-                  child: Image.network(prod.productImage)),
+                height: height,
+                child: Image.network(prod.productImage),
+              ),
             ),
             Container(
               margin: EdgeInsets.fromLTRB(8, 8, 8, 8),

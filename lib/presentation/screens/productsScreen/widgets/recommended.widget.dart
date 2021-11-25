@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
-import 'package:scarvs/app/constants/app.keys.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/models/product.model.dart';
 import 'package:scarvs/presentation/screens/productDetailScreen/product.detail.screen.dart';
@@ -58,8 +57,8 @@ Widget productForYou(
                       );
                     },
                     child: Container(
-                      height: 150,
-                      width: 150,
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      width: MediaQuery.of(context).size.height * 0.165,
                       child: Image.network(
                         prod.productImage,
                         fit: BoxFit.scaleDown,

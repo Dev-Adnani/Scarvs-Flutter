@@ -121,7 +121,7 @@ class ProductScreen extends StatelessWidget {
                     ),
                     vSizedBox1,
                     Container(
-                      height: 220,
+                      height: 200,
                       width: MediaQuery.of(context).size.width,
                       child: Consumer<ProductNotifier>(
                         builder: (context, notifier, _) {
