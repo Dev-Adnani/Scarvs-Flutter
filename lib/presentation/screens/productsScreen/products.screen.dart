@@ -22,7 +22,7 @@ class ProductScreen extends StatelessWidget {
         backgroundColor: themeFlag ? AppColors.mirage : AppColors.creamColor,
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(20, 45, 20, 0),
+            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
             child: Column(
               children: [
                 Column(

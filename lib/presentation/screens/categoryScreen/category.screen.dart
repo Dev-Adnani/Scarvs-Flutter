@@ -10,6 +10,7 @@ import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/custom.loader.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
+import 'package:scarvs/presentation/widgets/shimmer.effects.dart';
 
 class CategoryScreen extends StatelessWidget {
   final CategoryScreenArgs categoryScreenArgs;
@@ -63,11 +64,8 @@ class CategoryScreen extends StatelessWidget {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
-                            return customLoader(
-                                context: context,
-                                themeFlag: themeFlag,
-                                lottieAsset: AppAssets.onBoardingOne,
-                                text: 'Please Wait Till It Loads');
+                            return ShimmerEffects.buildCategoryShimmer(
+                                context: context);
                           } else if (!snapshot.hasData) {
                             return customLoader(
                               context: context,
