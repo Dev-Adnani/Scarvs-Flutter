@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 
-Widget selectSize({required int size, required bool themeFlag}) {
+Widget selectSize(
+    {required int size,
+    required bool themeFlag,
+    required BuildContext context}) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 10),
     child: Container(
