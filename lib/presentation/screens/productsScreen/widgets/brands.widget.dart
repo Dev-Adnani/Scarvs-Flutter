@@ -39,21 +39,32 @@ class BrandWidget extends StatelessWidget {
         },
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.14,
-                width: MediaQuery.of(context).size.width * 0.38,
-                child: Image.network(images),
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+              side: BorderSide(
+                color: Colors.grey.withOpacity(0.2),
+                width: 1,
               ),
-              vSizedBox1,
-              Text(
-                text,
-                style: CustomTextWidget.bodyText2(
-                  color: themeFlag ? AppColors.creamColor : AppColors.mirage,
+            ),
+            elevation: 6,
+            color: themeFlag ? AppColors.mirage : AppColors.creamColor,
+            child: Column(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.14,
+                  width: MediaQuery.of(context).size.width * 0.38,
+                  child: Image.network(images),
                 ),
-              )
-            ],
+                vSizedBox1,
+                Text(
+                  text,
+                  style: CustomTextWidget.bodyText2(
+                    color: themeFlag ? AppColors.creamColor : AppColors.mirage,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       );
@@ -72,7 +83,7 @@ class BrandWidget extends StatelessWidget {
           ),
           vSizedBox2,
           Container(
-            height: MediaQuery.of(context).size.height * 0.18,
+            height: MediaQuery.of(context).size.height * 0.20,
             width: MediaQuery.of(context).size.width,
             child: ListView.builder(
               shrinkWrap: false,

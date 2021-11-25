@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/models/productID.model.dart';
-import 'package:scarvs/core/notifiers/size.notifier.dart';
 import 'package:scarvs/presentation/screens/productDetailScreen/widget/select.size.dart';
 import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
@@ -45,11 +43,25 @@ Widget productUI({
                     ? Image.asset(AppAssets.diamondWhite)
                     : Image.asset(AppAssets.diamondBlack),
               ),
-              InteractiveViewer(
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.22,
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  child: Image.network(snapshot.productImage),
+              Hero(
+                tag: Key(snapshot.productId.toString()),
+                placeholderBuilder: (
+                  BuildContext context,
+                  Size heroSize,
+                  Widget child,
+                ) {
+                  return Container(
+                    width: heroSize.width,
+                    height: heroSize.height,
+                    child: Image.network(snapshot.productImage),
+                  );
+                },
+                child: InteractiveViewer(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.22,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    child: Image.network(snapshot.productImage),
+                  ),
                 ),
               ),
             ],

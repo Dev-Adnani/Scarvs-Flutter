@@ -37,9 +37,13 @@ Widget _showProducts({
     child: Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.2),
+          width: 1,
+        ),
       ),
-      elevation: 2,
-      color: Colors.white,
+      elevation: 6,
+      color: themeFlag ? AppColors.mirage : AppColors.creamColor,
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: () {
@@ -71,7 +75,7 @@ Widget _showProducts({
                     prod.productName,
                     style: CustomTextWidget.bodyText3(
                       color:
-                          themeFlag ? AppColors.mirage : AppColors.creamColor,
+                          themeFlag ? AppColors.creamColor : AppColors.mirage,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -80,7 +84,7 @@ Widget _showProducts({
                     '₹  ${prod.productPrice}',
                     style: CustomTextWidget.bodyText3(
                       color:
-                          themeFlag ? AppColors.mirage : AppColors.creamColor,
+                          themeFlag ? AppColors.creamColor : AppColors.mirage,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
