@@ -4,6 +4,7 @@ import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/core/notifiers/product.notifier.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
+import 'package:scarvs/core/notifiers/user.notifier.dart';
 import 'package:scarvs/presentation/screens/productsScreen/widgets/brands.widget.dart';
 import 'package:scarvs/presentation/screens/productsScreen/widgets/recommended.widget.dart';
 import 'package:scarvs/presentation/widgets/shimmer.effects.dart';
@@ -17,6 +18,9 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeNotifier _themeNotifier = Provider.of<ThemeNotifier>(context);
     var themeFlag = _themeNotifier.darkTheme;
+
+    UserNotifier _userData = Provider.of<UserNotifier>(context);
+    var userName = _userData.getUserName == null ? ' ' : _userData.getUserName;
     return SafeArea(
       child: Scaffold(
         backgroundColor: themeFlag ? AppColors.mirage : AppColors.creamColor,
@@ -29,7 +33,7 @@ class ProductScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Hi Dev',
+                      'Hi , $userName',
                       style: CustomTextWidget.bodyTextB1(
                         color:
                             themeFlag ? AppColors.creamColor : AppColors.mirage,
