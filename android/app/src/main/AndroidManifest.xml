@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dev.scarvs">
    <application
-        android:label="Ｓｃａｒｖｓ"
+        android:label="Scarvs"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
