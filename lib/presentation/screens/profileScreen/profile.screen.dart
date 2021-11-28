@@ -206,7 +206,9 @@ class ProfileScreen extends StatelessWidget {
                   height: 8,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushNamed(AppRouter.accountInfo);
+                  },
                   child: Row(
                     children: [
                       Text(
