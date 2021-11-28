@@ -21,7 +21,7 @@ class UserAPI {
   }
 
   Future getUserDetails({required String userEmail}) async {
-    const subUrl = '/info/userEmail';
+    var subUrl = '/info/$userEmail';
     final Uri uri = Uri.parse(ApiRoutes.baseurl + subUrl);
     final http.Response response = await client.get(
       uri,

@@ -72,12 +72,11 @@ class UserNotifier with ChangeNotifier {
     try {
       var userData = await _userAPI.getUserDetails(userEmail: userEmail);
       var response = UserDetails.fromJson(jsonDecode(userData));
-
       final _data = response.data;
       final _filled = response.filled;
       final _received = response.received;
 
-      if (_received || _filled) {
+      if (_received && _filled) {
         userAddress = _data.userAddress;
         userPhoneNumber = _data.userPhoneNo;
         userEmail = _data.user.useremail;
