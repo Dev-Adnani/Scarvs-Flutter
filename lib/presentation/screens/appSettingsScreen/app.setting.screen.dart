@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
-import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
