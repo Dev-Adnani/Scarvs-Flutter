@@ -1,5 +1,7 @@
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
+import 'package:scarvs/presentation/screens/accountInformationScreen/account.information.screen.dart';
+import 'package:scarvs/presentation/screens/appSettingsScreen/app.setting.screen.dart';
 import 'package:scarvs/presentation/screens/cartScreen/cart.screen.dart';
 import 'package:scarvs/presentation/screens/categoryScreen/category.screen.dart';
 import 'package:scarvs/presentation/screens/favouriteScreen/favourite.screen.dart';
@@ -19,16 +21,24 @@ class AppRouter {
   static const String productRoute = "/product";
   static const String loginRoute = "/login";
   static const String signUpRoute = "/signup";
+  static const String appSettingsRoute = "/appSettings";
   static const String homeRoute = "/home";
   static const String cartRoute = "/cart";
   static const String favRoute = "/fav";
   static const String searchRoute = "/search";
   static const String profileRoute = "/profile";
+  static const String accountInfo = "/accountInfo";
   static const String categoryRoute = "/category";
   static const String prodDetailRoute = "/productDetail";
 
   static Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case appSettingsRoute:
+        {
+          return MaterialPageRoute(
+            builder: (_) => AppSettings(),
+          );
+        }
       case homeRoute:
         {
           return MaterialPageRoute(
@@ -109,6 +119,12 @@ class AppRouter {
                   as CategoryScreenArgs,
             ),
             settings: settings,
+          );
+        }
+      case accountInfo:
+        {
+          return MaterialPageRoute(
+            builder: (_) => AccountInformationScreen(),
           );
         }
     }

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
-import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/models/productID.model.dart';
 import 'package:scarvs/presentation/screens/productDetailScreen/widget/select.size.dart';
 import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
@@ -18,10 +17,7 @@ Widget productUI({
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      CustomBackButton(
-        route: AppRouter.homeRoute,
-        themeFlag: themeFlag,
-      ),
+      CustomBackPop(themeFlag: themeFlag),
       Column(
         children: [
           Center(
@@ -45,17 +41,6 @@ Widget productUI({
               ),
               Hero(
                 tag: Key(snapshot.productId.toString()),
-                placeholderBuilder: (
-                  BuildContext context,
-                  Size heroSize,
-                  Widget child,
-                ) {
-                  return Container(
-                    width: heroSize.width,
-                    height: heroSize.height,
-                    child: Image.network(snapshot.productImage),
-                  );
-                },
                 child: InteractiveViewer(
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.22,

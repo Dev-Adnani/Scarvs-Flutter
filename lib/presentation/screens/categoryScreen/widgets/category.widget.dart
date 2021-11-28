@@ -64,9 +64,12 @@ Widget _showProducts(
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
               ),
-              child: Container(
-                height: height,
-                child: Image.network(prod.productImage),
+              child: Hero(
+                tag: Key(prod.productId.toString()),
+                child: Container(
+                  height: height,
+                  child: Image.network(prod.productImage),
+                ),
               ),
             ),
             Container(

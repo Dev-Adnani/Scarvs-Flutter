@@ -41,21 +41,6 @@ Widget productForYou(
                 children: [
                   Hero(
                     tag: Key(prod.productId.toString()),
-                    flightShuttleBuilder: (
-                      BuildContext flightContext,
-                      Animation<double> animation,
-                      HeroFlightDirection flightDirection,
-                      BuildContext fromHeroContext,
-                      BuildContext toHeroContext,
-                    ) {
-                      return AnimatedBuilder(
-                        animation: animation,
-                        builder: (context, child) => Container(
-                          color: Colors.red.withOpacity(1 - animation.value),
-                          child: Image.network(prod.productImage),
-                        ),
-                      );
-                    },
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.15,
                       width: MediaQuery.of(context).size.height * 0.165,
