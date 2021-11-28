@@ -19,4 +19,19 @@ class UserAPI {
     final dynamic body = response.body;
     return body;
   }
+
+  Future getUserDetails({required String userEmail}) async {
+    const subUrl = '/info/userEmail';
+    final Uri uri = Uri.parse(ApiRoutes.baseurl + subUrl);
+    final http.Response response = await client.get(
+      uri,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': "*",
+      },
+    );
+    final dynamic body = response.body;
+    return body;
+  }
 }

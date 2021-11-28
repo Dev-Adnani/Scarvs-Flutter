@@ -23,72 +23,121 @@ class AccountInformationScreen extends StatelessWidget {
         body: Container(
           margin: EdgeInsets.fromLTRB(16, 0, 16, 16),
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    CustomBackPop(themeFlag: themeFlag),
-                    Text(
-                      'User Profile',
-                      style: CustomTextWidget.bodyTextB2(
-                        color:
-                            themeFlag ? AppColors.creamColor : AppColors.mirage,
-                      ),
-                    ),
-                  ],
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Container(
-                    margin: EdgeInsets.only(top: 40),
-                    width: profilePictureSize,
-                    height: profilePictureSize,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: (profilePictureSize),
-                      child: Hero(
-                        tag: 'profilePicture',
-                        child: ClipOval(
-                          child: SvgPicture.network(
-                            'https://avatars.dicebear.com/api/big-smile/${userNotifier.getUserName!}.svg',
-                            semanticsLabel: 'A shark?!',
-                            alignment: Alignment.center,
+            child: Consumer<UserNotifier>(
+              builder: (context, notifier, _) {
+                return FutureBuilder(
+                  future: notifier.getUserDetails(
+                      userEmail: userNotifier.userEmail!, context: context),
+                  builder: (context, snapshot) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            CustomBackPop(themeFlag: themeFlag),
+                            Text(
+                              'User Profile',
+                              style: CustomTextWidget.bodyTextB2(
+                                color: themeFlag
+                                    ? AppColors.creamColor
+                                    : AppColors.mirage,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            margin: EdgeInsets.only(top: 40),
+                            width: profilePictureSize,
+                            height: profilePictureSize,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: (profilePictureSize),
+                              child: Hero(
+                                tag: 'profilePicture',
+                                child: ClipOval(
+                                  child: SvgPicture.network(
+                                    'https://avatars.dicebear.com/api/big-smile/${userNotifier.getUserName!}.svg',
+                                    semanticsLabel: 'A shark?!',
+                                    alignment: Alignment.center,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 40),
-                Text(
-                  'Name',
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  userNotifier.getUserName!,
-                  style: TextStyle(
-                    color: themeFlag ? AppColors.creamColor : AppColors.mirage,
-                  ),
-                ),
-                SizedBox(
-                  height: 24,
-                ),
-                Text(
-                  'Email',
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  userNotifier.getUserEmail!,
-                  style: TextStyle(
-                    color: themeFlag ? AppColors.creamColor : AppColors.mirage,
-                  ),
-                ),
-              ],
+                        SizedBox(height: 40),
+                        Text(
+                          'Name',
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          notifier.getUserName!,
+                          style: TextStyle(
+                            color: themeFlag
+                                ? AppColors.creamColor
+                                : AppColors.mirage,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 24,
+                        ),
+                        Text(
+                          'Email',
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          notifier.getUserEmail!,
+                          style: TextStyle(
+                            color: themeFlag
+                                ? AppColors.creamColor
+                                : AppColors.mirage,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 24,
+                        ),
+                        Text(
+                          'Address ',
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          notifier.getuserAddress,
+                          style: TextStyle(
+                            color: themeFlag
+                                ? AppColors.creamColor
+                                : AppColors.mirage,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 24,
+                        ),
+                        Text(
+                          'Phone ',
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          notifier.getuserPhoneNumber,
+                          style: TextStyle(
+                            color: themeFlag
+                                ? AppColors.creamColor
+                                : AppColors.mirage,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
             ),
           ),
         ),
