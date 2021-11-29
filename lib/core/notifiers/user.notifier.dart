@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:scarvs/app/constants/app.keys.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/api/user.api.dart';
+import 'package:scarvs/core/models/update.user.model.dart';
 import 'package:scarvs/core/models/user.model.dart';
 import 'package:scarvs/core/models/userDetails.model.dart';
 import 'package:scarvs/core/utils/snackbar.util.dart';
@@ -49,6 +50,7 @@ class UserNotifier with ChangeNotifier {
                 )
               },
             );
+        notifyListeners();
       } else {
         userEmail = _data.email;
         userName = _data.username;
@@ -83,6 +85,34 @@ class UserNotifier with ChangeNotifier {
         userName = _data.user.username;
         notifyListeners();
       }
+    } on SocketException catch (_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackUtil.stylishSnackBar(
+            text: 'Oops No You Need A Good Internet Connection',
+            context: context),
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future updateUserDetails({
+    required String userEmail,
+    required String userAddress,
+    required String userPhoneNo,
+    required BuildContext context,
+  }) async {
+    try {
+      var userData = await _userAPI.updateUserDetails(
+          userEmail: userEmail,
+          userAddress: userAddress,
+          userPhoneNo: userPhoneNo);
+      print(userData);
+      var response = UpdateUser.fromJson(jsonDecode(userData));
+      final _updated = response.updated;
+      notifyListeners();
+
+      return _updated;
     } on SocketException catch (_) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackUtil.stylishSnackBar(

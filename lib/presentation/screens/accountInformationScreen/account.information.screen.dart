@@ -52,7 +52,9 @@ class AccountInformationScreen extends StatelessWidget {
                             width: profilePictureSize,
                             height: profilePictureSize,
                             child: CircleAvatar(
-                              backgroundColor: Colors.white,
+                              backgroundColor: themeFlag
+                                  ? AppColors.creamColor
+                                  : AppColors.mirage,
                               radius: (profilePictureSize),
                               child: Hero(
                                 tag: 'profilePicture',

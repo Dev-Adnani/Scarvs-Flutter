@@ -4,6 +4,7 @@ import 'package:scarvs/presentation/screens/accountInformationScreen/account.inf
 import 'package:scarvs/presentation/screens/appSettingsScreen/app.setting.screen.dart';
 import 'package:scarvs/presentation/screens/cartScreen/cart.screen.dart';
 import 'package:scarvs/presentation/screens/categoryScreen/category.screen.dart';
+import 'package:scarvs/presentation/screens/editProfileScreen/edit.profile.screen.dart';
 import 'package:scarvs/presentation/screens/favouriteScreen/favourite.screen.dart';
 import 'package:scarvs/presentation/screens/homeScreen/home.screen.dart';
 import 'package:scarvs/presentation/screens/loginScreen/login.view.dart';
@@ -30,9 +31,16 @@ class AppRouter {
   static const String accountInfo = "/accountInfo";
   static const String categoryRoute = "/category";
   static const String prodDetailRoute = "/productDetail";
+  static const String editProfileRoute = "/editProfile";
 
   static Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case editProfileRoute:
+        {
+          return MaterialPageRoute(
+            builder: (_) => EditProfileScreen(),
+          );
+        }
       case appSettingsRoute:
         {
           return MaterialPageRoute(

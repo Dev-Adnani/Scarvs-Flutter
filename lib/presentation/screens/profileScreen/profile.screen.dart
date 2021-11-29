@@ -7,6 +7,7 @@ import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:scarvs/core/notifiers/user.notifier.dart';
+import 'package:scarvs/core/utils/snackbar.util.dart';
 import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
@@ -48,7 +49,10 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     behavior: HitTestBehavior.translucent,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(AppRouter.editProfileRoute);
+                    },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(0, 18, 0, 18),
                       child: Row(
@@ -154,6 +158,8 @@ class ProfileScreen extends StatelessWidget {
     required bool themeFlag,
   }) {
     final userNotifier = Provider.of<UserNotifier>(context, listen: false);
+    var userName =
+        userNotifier.getUserName == null ? 'Wait' : userNotifier.getUserName;
     final double profilePictureSize = MediaQuery.of(context).size.width / 4;
     return Container(
       margin: EdgeInsets.only(bottom: 14),
@@ -165,22 +171,27 @@ class ProfileScreen extends StatelessWidget {
             height: profilePictureSize,
             child: GestureDetector(
               onTap: () {
-                Navigator.of(context).pushNamed(AppRouter.accountInfo);
+                if (userName == 'Wait') {
+                  SnackUtil.stylishSnackBar(
+                      text: 'Session Timeout', context: context);
+                  Navigator.of(context)
+                      .pushReplacementNamed(AppRouter.loginRoute);
+                  DeleteCache.deleteKey(AppKeys.userData);
+                } else {
+                  Navigator.of(context).pushNamed(AppRouter.accountInfo);
+                }
               },
               child: CircleAvatar(
-                backgroundColor: Colors.grey[200],
-                radius: profilePictureSize,
-                child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: profilePictureSize - 4,
-                  child: Hero(
-                    tag: 'profilePicture',
-                    child: ClipOval(
-                      child: SvgPicture.network(
-                        'https://avatars.dicebear.com/api/big-smile/${userNotifier.getUserName!}.svg',
-                        semanticsLabel: 'A shark?!',
-                        alignment: Alignment.center,
-                      ),
+                backgroundColor:
+                    themeFlag ? AppColors.creamColor : AppColors.mirage,
+                radius: profilePictureSize - 4,
+                child: Hero(
+                  tag: 'profilePicture',
+                  child: ClipOval(
+                    child: SvgPicture.network(
+                      'https://avatars.dicebear.com/api/big-smile/$userName.svg',
+                      semanticsLabel: 'A shark?!',
+                      alignment: Alignment.center,
                     ),
                   ),
                 ),
@@ -195,7 +206,7 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  userNotifier.getUserName!,
+                  userName!,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -207,7 +218,15 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushNamed(AppRouter.accountInfo);
+                    if (userName == 'Wait') {
+                      SnackUtil.stylishSnackBar(
+                          text: 'Session Timeout', context: context);
+                      Navigator.of(context)
+                          .pushReplacementNamed(AppRouter.loginRoute);
+                      DeleteCache.deleteKey(AppKeys.userData);
+                    } else {
+                      Navigator.of(context).pushNamed(AppRouter.accountInfo);
+                    }
                   },
                   child: Row(
                     children: [
