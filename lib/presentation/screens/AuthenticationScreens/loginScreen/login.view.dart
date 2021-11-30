@@ -2,37 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
-import 'package:scarvs/presentation/screens/signUpScreen/widget/welcome.signup.widget.dart';
+import 'package:scarvs/presentation/screens/AuthenticationScreens/loginScreen/widget/welcome.login.widget.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 import 'package:scarvs/core/notifiers/authentication.notifer.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
-import 'package:scarvs/presentation/widgets/custom.animated.container.dart';
 import 'package:scarvs/presentation/widgets/custom.text.field.dart';
 
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget {
+  LoginScreen({Key? key}) : super(key: key);
   final TextEditingController userEmailController = TextEditingController();
-  final TextEditingController userNameController = TextEditingController();
   final TextEditingController userPassController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    ThemeNotifier _themeNotifier = Provider.of<ThemeNotifier>(context);
-    var themeFlag = _themeNotifier.darkTheme;
-    AuthenticationNotifier authNotifier(bool renderUI) =>
-        Provider.of<AuthenticationNotifier>(context, listen: renderUI);
-
-    _createAccount() {
+    _userLogin() {
       if (_formKey.currentState!.validate()) {
-        authNotifier(false).createAccount(
+        var authNotifier =
+            Provider.of<AuthenticationNotifier>(context, listen: false);
+        authNotifier.userLogin(
             context: context,
             useremail: userEmailController.text,
-            username: userNameController.text,
             userpassword: userPassController.text);
       }
     }
 
+    ThemeNotifier _themeNotifier = Provider.of<ThemeNotifier>(context);
+    var themeFlag = _themeNotifier.darkTheme;
     return SafeArea(
       child: Scaffold(
         backgroundColor: themeFlag ? AppColors.mirage : AppColors.creamColor,
@@ -41,7 +37,8 @@ class SignUpScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            welcomeTextSignup(themeFlag: themeFlag),
+            welcomeTextLogin(themeFlag: themeFlag),
+            vSizedBox2,
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -53,16 +50,7 @@ class SignUpScreen extends StatelessWidget {
                       children: [
                         Padding(
                           padding:
-                              const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
-                          child: CustomTextField.customTextField(
-                              textEditingController: userNameController,
-                              hintText: 'Enter User Name',
-                              validator: (val) =>
-                                  val!.isEmpty ? 'Enter an Username' : null),
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
+                              const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
                           child: CustomTextField.customTextField(
                             textEditingController: userEmailController,
                             hintText: 'Enter an email',
@@ -73,58 +61,21 @@ class SignUpScreen extends StatelessWidget {
                                     : null,
                           ),
                         ),
+                        vSizedBox1,
                         Padding(
                           padding:
-                              const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
+                              const EdgeInsets.fromLTRB(35.0, 0.0, 35.0, 2.0),
                           child: CustomTextField.customTextField(
-                            onChanged: (val) {
-                              authNotifier(false)
-                                  .checkPasswordStrength(password: val);
-                            },
                             textEditingController: userPassController,
-                            hintText: 'Enter a Password',
+                            hintText: 'Enter a password',
                             validator: (val) =>
                                 val!.isEmpty ? 'Enter a password' : null,
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ),
-                  vSizedBox1,
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(35.0, 10.0, 35.0, 2.0),
-                    child: Row(
-                      children: [
-                        Text(authNotifier(true).passwordEmoji!),
-                        hSizedBox1,
-                        if (authNotifier(true).passwordLevel! == 'Weak')
-                          CustomAnimatedContainer.customAnimatedContainer(
-                            height: 10,
-                            width: MediaQuery.of(context).size.width * 0.10,
-                            context: context,
-                            color: Colors.red,
-                            curve: Curves.easeIn,
-                          ),
-                        if (authNotifier(true).passwordLevel! == 'Medium')
-                          CustomAnimatedContainer.customAnimatedContainer(
-                            height: 10,
-                            width: MediaQuery.of(context).size.width * 0.40,
-                            context: context,
-                            color: Colors.blue,
-                            curve: Curves.easeIn,
-                          ),
-                        if (authNotifier(true).passwordLevel! == 'Strong')
-                          CustomAnimatedContainer.customAnimatedContainer(
-                            height: 10,
-                            width: MediaQuery.of(context).size.width * 0.70,
-                            context: context,
-                            color: Colors.green,
-                            curve: Curves.easeIn,
-                          ),
-                      ],
-                    ),
-                  ),
-                  vSizedBox1,
+                  vSizedBox2,
                   MaterialButton(
                     height: MediaQuery.of(context).size.height * 0.05,
                     minWidth: MediaQuery.of(context).size.width * 0.8,
@@ -132,18 +83,18 @@ class SignUpScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     onPressed: () async {
-                      _createAccount();
+                      _userLogin();
                     },
                     color: AppColors.rawSienna,
                     child: const Text(
-                      'Sign Up',
+                      'LOGIN',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 17,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
@@ -152,7 +103,7 @@ class SignUpScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Already Having A Account? ",
+                  "Not Having A Account? ",
                   style: TextStyle(
                     color: themeFlag ? AppColors.creamColor : AppColors.mirage,
                     fontSize: 14.0,
@@ -160,9 +111,9 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () =>
-                      Navigator.of(context).pushNamed(AppRouter.loginRoute),
+                      Navigator.of(context).pushNamed(AppRouter.signUpRoute),
                   child: Text(
-                    "Login now",
+                    "Sign up",
                     style: TextStyle(
                       decoration: TextDecoration.underline,
                       color:
