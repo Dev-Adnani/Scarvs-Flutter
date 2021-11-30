@@ -38,19 +38,19 @@ class UserNotifier with ChangeNotifier {
       final _received = response.received;
 
       if (!_received) {
+        notifyListeners();
         Navigator.of(context)
             .pushReplacementNamed(AppRouter.loginRoute)
             .whenComplete(
               () => {
-                DeleteCache.deleteKey(AppKeys.userData).whenComplete(
-                  () => ScaffoldMessenger.of(context).showSnackBar(
+                DeleteCache.deleteKey(AppKeys.userData).whenComplete(() {
+                  ScaffoldMessenger.of(context).showSnackBar(
                     SnackUtil.stylishSnackBar(
                         text: 'Oops Session Timeout', context: context),
-                  ),
-                )
+                  );
+                })
               },
             );
-        notifyListeners();
       } else {
         userEmail = _data.email;
         userName = _data.username;
