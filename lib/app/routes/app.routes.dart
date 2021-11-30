@@ -1,20 +1,20 @@
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
-import 'package:scarvs/presentation/screens/AuthenticationScreens/loginScreen/login.view.dart';
-import 'package:scarvs/presentation/screens/AuthenticationScreens/signUpScreen/signup.screen.dart';
-import 'package:scarvs/presentation/screens/ProductScreens/categoryScreen/category.screen.dart';
-import 'package:scarvs/presentation/screens/ProductScreens/mainProductScreen/product.screen.dart';
-import 'package:scarvs/presentation/screens/ProductScreens/productDetailScreen/product.detail.screen.dart';
 import 'package:scarvs/presentation/screens/cartScreen/cart.screen.dart';
+import 'package:scarvs/presentation/screens/categoryScreen/category.screen.dart';
 import 'package:scarvs/presentation/screens/favouriteScreen/favourite.screen.dart';
 import 'package:scarvs/presentation/screens/homeScreen/home.screen.dart';
+import 'package:scarvs/presentation/screens/loginScreen/login.view.dart';
 import 'package:scarvs/presentation/screens/onBoardingScreen/onBoarding.screen.dart';
+import 'package:scarvs/presentation/screens/productDetailScreen/product.detail.screen.dart';
+import 'package:scarvs/presentation/screens/productScreen/product.screen.dart';
 import 'package:scarvs/presentation/screens/profileScreens/accountInformationScreen/account.information.screen.dart';
 import 'package:scarvs/presentation/screens/profileScreens/appSettingsScreen/app.setting.screen.dart';
 import 'package:scarvs/presentation/screens/profileScreens/changePasswordScreen/change.password.screen.dart';
 import 'package:scarvs/presentation/screens/profileScreens/editProfileScreen/edit.profile.screen.dart';
 import 'package:scarvs/presentation/screens/profileScreens/mainProfileScreen/profile.screen.dart';
 import 'package:scarvs/presentation/screens/searchScreen/search.screen.dart';
+import 'package:scarvs/presentation/screens/signUpScreen/signup.screen.dart';
 import 'package:scarvs/presentation/screens/splashScreen/splash.screen.dart';
 
 class AppRouter {
