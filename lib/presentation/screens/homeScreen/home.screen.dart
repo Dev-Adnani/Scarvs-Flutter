@@ -7,9 +7,9 @@ import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/constants/app.keys.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:scarvs/core/notifiers/user.notifier.dart';
-import 'package:scarvs/presentation/screens/ProductScreens/mainProductScreen/product.screen.dart';
 import 'package:scarvs/presentation/screens/cartScreen/cart.screen.dart';
 import 'package:scarvs/presentation/screens/favouriteScreen/favourite.screen.dart';
+import 'package:scarvs/presentation/screens/productScreen/product.screen.dart';
 import 'package:scarvs/presentation/screens/profileScreens/mainProfileScreen/profile.screen.dart';
 import 'package:scarvs/presentation/screens/searchScreen/search.screen.dart';
 
