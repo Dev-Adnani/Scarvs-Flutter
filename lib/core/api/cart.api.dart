@@ -51,7 +51,7 @@ class CartAPI {
   }
 
   Future deleteFromCart({
-    required String productId,
+    required dynamic productId,
     required BuildContext context,
   }) async {
     var subUrl = '/cart/delete/$productId';

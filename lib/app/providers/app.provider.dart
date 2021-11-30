@@ -1,6 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:scarvs/core/notifiers/authentication.notifer.dart';
+import 'package:scarvs/core/notifiers/cart.notifier.dart';
 import 'package:scarvs/core/notifiers/product.notifier.dart';
 import 'package:scarvs/core/notifiers/size.notifier.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
@@ -13,5 +14,6 @@ class AppProvider {
     ChangeNotifierProvider(create: (_) => UserNotifier()),
     ChangeNotifierProvider(create: (_) => ProductNotifier()),
     ChangeNotifierProvider(create: (_) => SizeNotifier()),
+    ChangeNotifierProvider(create: (_) => CartNotifier()),
   ];
 }

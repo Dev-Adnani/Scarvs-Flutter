@@ -68,10 +68,11 @@ class CartNotifier with ChangeNotifier {
   }
 
   Future deleteFromCart(
-      {required BuildContext context, required String productId}) async {
+      {required BuildContext context, required dynamic productId}) async {
     try {
       var products =
           await _cartAPI.deleteFromCart(productId: productId, context: context);
+      print(products);
       var response = CartDelete.fromJson(jsonDecode(products));
 
       final _productDeleted = response.deleted;
