@@ -15,8 +15,8 @@ Widget selectSize({required bool themeFlag, required BuildContext context}) {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Container(
-          width: 80,
-          height: 40,
+          width: MediaQuery.of(context).size.width * 0.20,
+          height: MediaQuery.of(context).size.height * 0.20,
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -48,8 +48,8 @@ Widget selectSize({required bool themeFlag, required BuildContext context}) {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Container(
-          width: 80,
-          height: 40,
+          width: MediaQuery.of(context).size.width * 0.20,
+          height: MediaQuery.of(context).size.height * 0.20,
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -81,8 +81,8 @@ Widget selectSize({required bool themeFlag, required BuildContext context}) {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Container(
-          width: 80,
-          height: 40,
+          width: MediaQuery.of(context).size.width * 0.20,
+          height: MediaQuery.of(context).size.height * 0.20,
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -114,8 +114,8 @@ Widget selectSize({required bool themeFlag, required BuildContext context}) {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Container(
-          width: 80,
-          height: 40,
+          width: MediaQuery.of(context).size.width * 0.20,
+          height: MediaQuery.of(context).size.height * 0.20,
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
