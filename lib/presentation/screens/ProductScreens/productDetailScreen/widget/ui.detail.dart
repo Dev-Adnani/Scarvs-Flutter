@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/core/models/productID.model.dart';
-import 'package:scarvs/presentation/screens/ProductScreens/productDetailScreen/widget/select.size.dart';
+import 'package:scarvs/presentation/screens/productScreens/productDetailScreen/widget/select.size.dart';
 import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
@@ -12,7 +12,6 @@ Widget productUI({
   required BuildContext context,
   required bool themeFlag,
   required SingleProductData snapshot,
-  required List<int> size,
 }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,14 +71,7 @@ Widget productUI({
       Container(
         height: MediaQuery.of(context).size.height * 0.05,
         width: MediaQuery.of(context).size.width,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: size.length,
-          itemBuilder: (BuildContext context, int index) {
-            return selectSize(
-                size: size[index], themeFlag: themeFlag, context: context);
-          },
-        ),
+        child: selectSize(context: context, themeFlag: themeFlag),
       ),
       Padding(
         padding: EdgeInsets.fromLTRB(20, 20, 20, 0),

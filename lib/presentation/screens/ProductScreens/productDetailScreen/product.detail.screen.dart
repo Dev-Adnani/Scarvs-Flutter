@@ -21,7 +21,6 @@ class _ProductDetailState extends State<ProductDetail> {
   Widget build(BuildContext context) {
     ThemeNotifier _themeNotifier = Provider.of<ThemeNotifier>(context);
     var themeFlag = _themeNotifier.darkTheme;
-    List<int> size = [8, 9, 10, 11];
     return Scaffold(
       backgroundColor: themeFlag ? AppColors.mirage : AppColors.creamColor,
       body: SingleChildScrollView(
@@ -57,7 +56,6 @@ class _ProductDetailState extends State<ProductDetail> {
                     context: context,
                     themeFlag: themeFlag,
                     snapshot: _snapshot,
-                    size: size,
                   );
                 }
               },
