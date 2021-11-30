@@ -57,4 +57,25 @@ class UserAPI {
     final dynamic body = response.body;
     return body;
   }
+
+  Future changePassword(
+      {required String userEmail,
+      required String oluserpassword,
+      required String newuserpassword}) async {
+    const subUrl = '/auth/change-password';
+    final Uri uri = Uri.parse(ApiRoutes.baseurl + subUrl);
+    final http.Response response = await client.post(uri,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Origin': "*",
+        },
+        body: jsonEncode({
+          "oluserpassword": oluserpassword,
+          "useremail": userEmail,
+          "newuserpassword": newuserpassword
+        }));
+    final dynamic body = response.body;
+    return body;
+  }
 }

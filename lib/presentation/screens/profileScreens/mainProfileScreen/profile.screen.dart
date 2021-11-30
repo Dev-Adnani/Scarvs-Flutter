@@ -82,6 +82,37 @@ class ProfileScreen extends StatelessWidget {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       Navigator.of(context)
+                          .pushNamed(AppRouter.changePassRoute);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(0, 18, 0, 18),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Change Password',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: themeFlag
+                                  ? AppColors.creamColor
+                                  : AppColors.mirage,
+                            ),
+                          ),
+                          Icon(
+                            Icons.chevron_right,
+                            size: 20,
+                            color: themeFlag
+                                ? AppColors.creamColor
+                                : AppColors.mirage,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () {
+                      Navigator.of(context)
                           .pushNamed(AppRouter.appSettingsRoute);
                     },
                     child: Container(

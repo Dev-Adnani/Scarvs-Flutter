@@ -107,9 +107,38 @@ class UserNotifier with ChangeNotifier {
           userEmail: userEmail,
           userAddress: userAddress,
           userPhoneNo: userPhoneNo);
-      print(userData);
       var response = UpdateUser.fromJson(jsonDecode(userData));
       final _updated = response.updated;
+      notifyListeners();
+
+      return _updated;
+    } on SocketException catch (_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackUtil.stylishSnackBar(
+            text: 'Oops No You Need A Good Internet Connection',
+            context: context),
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future changePassword({
+    required String userEmail,
+    required String oluserpassword,
+    required String newuserpassword,
+    required BuildContext context,
+  }) async {
+    try {
+      var userData = await _userAPI.changePassword(
+          userEmail: userEmail,
+          oluserpassword: oluserpassword,
+          newuserpassword: newuserpassword);
+      print(userData);
+
+      var response = ChangeUserPassword.fromJson(jsonDecode(userData));
+      final _updated = response.updated;
+
       notifyListeners();
 
       return _updated;

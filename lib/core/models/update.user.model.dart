@@ -47,3 +47,28 @@ class UpdatedData {
     return _data;
   }
 }
+
+class ChangeUserPassword {
+  ChangeUserPassword({
+    required this.changed,
+    required this.updated,
+    required this.data,
+  });
+  late final bool changed;
+  late final bool updated;
+  late final String data;
+
+  ChangeUserPassword.fromJson(Map<String, dynamic> json) {
+    changed = json['changed'];
+    updated = json['updated'];
+    data = json['data'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['changed'] = changed;
+    _data['updated'] = updated;
+    _data['data'] = data;
+    return _data;
+  }
+}

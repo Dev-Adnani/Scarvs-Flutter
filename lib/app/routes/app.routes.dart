@@ -1,17 +1,18 @@
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
-import 'package:scarvs/presentation/screens/accountInformationScreen/account.information.screen.dart';
-import 'package:scarvs/presentation/screens/appSettingsScreen/app.setting.screen.dart';
 import 'package:scarvs/presentation/screens/cartScreen/cart.screen.dart';
 import 'package:scarvs/presentation/screens/categoryScreen/category.screen.dart';
-import 'package:scarvs/presentation/screens/editProfileScreen/edit.profile.screen.dart';
 import 'package:scarvs/presentation/screens/favouriteScreen/favourite.screen.dart';
 import 'package:scarvs/presentation/screens/homeScreen/home.screen.dart';
 import 'package:scarvs/presentation/screens/loginScreen/login.view.dart';
 import 'package:scarvs/presentation/screens/onBoardingScreen/onBoarding.screen.dart';
 import 'package:scarvs/presentation/screens/productDetailScreen/product.detail.screen.dart';
 import 'package:scarvs/presentation/screens/productsScreen/products.screen.dart';
-import 'package:scarvs/presentation/screens/profileScreen/profile.screen.dart';
+import 'package:scarvs/presentation/screens/profileScreens/accountInformationScreen/account.information.screen.dart';
+import 'package:scarvs/presentation/screens/profileScreens/appSettingsScreen/app.setting.screen.dart';
+import 'package:scarvs/presentation/screens/profileScreens/changePasswordScreen/change.password.screen.dart';
+import 'package:scarvs/presentation/screens/profileScreens/editProfileScreen/edit.profile.screen.dart';
+import 'package:scarvs/presentation/screens/profileScreens/mainProfileScreen/profile.screen.dart';
 import 'package:scarvs/presentation/screens/searchScreen/search.screen.dart';
 import 'package:scarvs/presentation/screens/signUpScreen/signup.screen.dart';
 import 'package:scarvs/presentation/screens/splashScreen/splash.screen.dart';
@@ -32,6 +33,7 @@ class AppRouter {
   static const String categoryRoute = "/category";
   static const String prodDetailRoute = "/productDetail";
   static const String editProfileRoute = "/editProfile";
+  static const String changePassRoute = "/changePassword";
 
   static Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -133,6 +135,12 @@ class AppRouter {
         {
           return MaterialPageRoute(
             builder: (_) => AccountInformationScreen(),
+          );
+        }
+      case changePassRoute:
+        {
+          return MaterialPageRoute(
+            builder: (_) => ChangePasswordScreen(),
           );
         }
     }

@@ -10,7 +10,7 @@ import 'package:scarvs/core/notifiers/user.notifier.dart';
 import 'package:scarvs/presentation/screens/cartScreen/cart.screen.dart';
 import 'package:scarvs/presentation/screens/favouriteScreen/favourite.screen.dart';
 import 'package:scarvs/presentation/screens/productsScreen/products.screen.dart';
-import 'package:scarvs/presentation/screens/profileScreen/profile.screen.dart';
+import 'package:scarvs/presentation/screens/profileScreens/mainProfileScreen/profile.screen.dart';
 import 'package:scarvs/presentation/screens/searchScreen/search.screen.dart';
 
 final List<SalomonBottomBarItem> bottomNavBarIcons = [
