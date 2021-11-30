@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/core/models/productID.model.dart';
-import 'package:scarvs/presentation/screens/productScreens/productDetailScreen/widget/select.size.dart';
+import 'package:scarvs/presentation/screens/productDetailScreen/widget/select.size.dart';
 import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';

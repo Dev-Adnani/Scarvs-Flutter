@@ -5,7 +5,7 @@ import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/core/models/productID.model.dart';
 import 'package:scarvs/core/notifiers/product.notifier.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
-import 'package:scarvs/presentation/screens/productScreens/productDetailScreen/widget/ui.detail.dart';
+import 'package:scarvs/presentation/screens/productDetailScreen/widget/ui.detail.dart';
 import 'package:scarvs/presentation/widgets/custom.loader.dart';
 
 class ProductDetail extends StatefulWidget {
