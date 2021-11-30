@@ -4,7 +4,7 @@ import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
-import 'package:scarvs/presentation/screens/ProductScreens/categoryScreen/category.screen.dart';
+import 'package:scarvs/presentation/screens/productScreens/categoryScreen/category.screen.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/models/product.model.dart';
-import 'package:scarvs/presentation/screens/ProductScreens/productDetailScreen/product.detail.screen.dart';
+import 'package:scarvs/presentation/screens/productScreens/productDetailScreen/product.detail.screen.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 
 Widget showDataInGrid(

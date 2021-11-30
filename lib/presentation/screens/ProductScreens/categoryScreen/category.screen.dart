@@ -5,7 +5,7 @@ import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/notifiers/product.notifier.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
-import 'package:scarvs/presentation/screens/ProductScreens/categoryScreen/widgets/category.widget.dart';
+import 'package:scarvs/presentation/screens/productScreens/categoryScreen/widgets/category.widget.dart';
 import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/custom.loader.dart';
