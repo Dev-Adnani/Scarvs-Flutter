@@ -8,7 +8,7 @@ class SnackUtil {
     return SnackBar(
       backgroundColor: AppColors.rawSienna,
       behavior: SnackBarBehavior.floating,
-      margin: EdgeInsets.fromLTRB(40, 0, 40, 100),
+      margin: const EdgeInsets.fromLTRB(40, 0, 40, 100),
       content: Text(
         text,
         style: TextStyle(

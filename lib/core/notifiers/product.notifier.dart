@@ -28,8 +28,6 @@ class ProductNotifier with ChangeNotifier {
       ScaffoldMessenger.of(context).showSnackBar(SnackUtil.stylishSnackBar(
           text: 'Oops No You Need A Good Internet Connection',
           context: context));
-    } catch (e) {
-      print(e);
     }
   }
 
@@ -54,8 +52,6 @@ class ProductNotifier with ChangeNotifier {
             text: 'Oops No You Need A Good Internet Connection',
             context: context),
       );
-    } catch (e) {
-      print(e);
     }
   }
 
@@ -79,8 +75,6 @@ class ProductNotifier with ChangeNotifier {
       ScaffoldMessenger.of(context).showSnackBar(SnackUtil.stylishSnackBar(
           text: 'Oops No You Need A Good Internet Connection',
           context: context));
-    } catch (e) {
-      print(e);
     }
   }
 
@@ -103,8 +97,6 @@ class ProductNotifier with ChangeNotifier {
       ScaffoldMessenger.of(context).showSnackBar(SnackUtil.stylishSnackBar(
           text: 'Oops No You Need A Good Internet Connection',
           context: context));
-    } catch (e) {
-      print(e);
     }
   }
 }

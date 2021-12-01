@@ -20,13 +20,13 @@ class ProductScreen extends StatelessWidget {
     var themeFlag = _themeNotifier.darkTheme;
 
     UserNotifier _userData = Provider.of<UserNotifier>(context);
-    var userName = _userData.getUserName == null ? ' ' : _userData.getUserName;
+    var userName = _userData.getUserName ?? ' ';
     return SafeArea(
       child: Scaffold(
         backgroundColor: themeFlag ? AppColors.mirage : AppColors.creamColor,
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
             child: Column(
               children: [
                 Column(
@@ -64,7 +64,7 @@ class ProductScreen extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.20,
                       width: MediaQuery.of(context).size.width,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(15, 10, 5, 0),
+                        padding: const EdgeInsets.fromLTRB(15, 10, 5, 0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -85,7 +85,7 @@ class ProductScreen extends StatelessWidget {
                                   style: ElevatedButton.styleFrom(
                                     primary: AppColors.creamColor,
                                     enableFeedback: true,
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                       horizontal: 20,
                                       vertical: 2,
                                     ),
@@ -102,7 +102,7 @@ class ProductScreen extends StatelessWidget {
                                   ),
                                 ),
                                 hSizedBox2,
-                                Container(
+                                SizedBox(
                                   height: 115,
                                   width: 180,
                                   child: Image.asset(AppAssets.homeJordan),
@@ -114,7 +114,7 @@ class ProductScreen extends StatelessWidget {
                       ),
                     ),
                     vSizedBox2,
-                    BrandWidget(),
+                    const BrandWidget(),
                     vSizedBox2,
                     Text(
                       'Exclusive Shoes',
@@ -124,7 +124,7 @@ class ProductScreen extends StatelessWidget {
                       ),
                     ),
                     vSizedBox1,
-                    Container(
+                    SizedBox(
                       height: 200,
                       width: MediaQuery.of(context).size.width,
                       child: Consumer<ProductNotifier>(

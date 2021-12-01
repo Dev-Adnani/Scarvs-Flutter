@@ -28,8 +28,6 @@ class CartNotifier with ChangeNotifier {
       ScaffoldMessenger.of(context).showSnackBar(SnackUtil.stylishSnackBar(
           text: 'Oops No You Need A Good Internet Connection',
           context: context));
-    } catch (e) {
-      print(e);
     }
   }
 
@@ -62,8 +60,6 @@ class CartNotifier with ChangeNotifier {
           context: context,
         ),
       );
-    } catch (e) {
-      print(e);
     }
   }
 
@@ -72,7 +68,6 @@ class CartNotifier with ChangeNotifier {
     try {
       var products =
           await _cartAPI.deleteFromCart(productId: productId, context: context);
-      print(products);
       var response = CartDelete.fromJson(jsonDecode(products));
 
       final _productDeleted = response.deleted;
@@ -85,8 +80,6 @@ class CartNotifier with ChangeNotifier {
           context: context,
         ),
       );
-    } catch (e) {
-      print(e);
     }
   }
 }

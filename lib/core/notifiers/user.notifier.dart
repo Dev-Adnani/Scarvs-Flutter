@@ -62,8 +62,6 @@ class UserNotifier with ChangeNotifier {
             text: 'Oops No You Need A Good Internet Connection',
             context: context),
       );
-    } catch (e) {
-      print(e);
     }
   }
 
@@ -91,8 +89,6 @@ class UserNotifier with ChangeNotifier {
             text: 'Oops No You Need A Good Internet Connection',
             context: context),
       );
-    } catch (e) {
-      print(e);
     }
   }
 
@@ -118,8 +114,6 @@ class UserNotifier with ChangeNotifier {
             text: 'Oops No You Need A Good Internet Connection',
             context: context),
       );
-    } catch (e) {
-      print(e);
     }
   }
 
@@ -134,7 +128,6 @@ class UserNotifier with ChangeNotifier {
           userEmail: userEmail,
           oluserpassword: oluserpassword,
           newuserpassword: newuserpassword);
-      print(userData);
 
       var response = ChangeUserPassword.fromJson(jsonDecode(userData));
       final _updated = response.updated;
@@ -148,8 +141,6 @@ class UserNotifier with ChangeNotifier {
             text: 'Oops No You Need A Good Internet Connection',
             context: context),
       );
-    } catch (e) {
-      print(e);
     }
   }
 }

@@ -15,7 +15,7 @@ class UserAPI {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Access-Control-Allow-Origin': "*",
-        "Authorization": "$token"
+        "Authorization": token
       },
     );
     final dynamic body = response.body;

@@ -46,13 +46,13 @@ class AppRouter {
       case appSettingsRoute:
         {
           return MaterialPageRoute(
-            builder: (_) => AppSettings(),
+            builder: (_) => const AppSettings(),
           );
         }
       case homeRoute:
         {
           return MaterialPageRoute(
-            builder: (_) => HomeScreen(),
+            builder: (_) => const HomeScreen(),
           );
         }
       case splashRoute:
@@ -71,7 +71,7 @@ class AppRouter {
       case productRoute:
         {
           return MaterialPageRoute(
-            builder: (_) => ProductScreen(),
+            builder: (_) => const ProductScreen(),
           );
         }
       case loginRoute:
@@ -89,7 +89,7 @@ class AppRouter {
       case favRoute:
         {
           return MaterialPageRoute(
-            builder: (_) => FavScreen(),
+            builder: (_) => const FavScreen(),
           );
         }
       case prodDetailRoute:
@@ -106,19 +106,19 @@ class AppRouter {
       case cartRoute:
         {
           return MaterialPageRoute(
-            builder: (_) => CartScreen(),
+            builder: (_) => const CartScreen(),
           );
         }
       case searchRoute:
         {
           return MaterialPageRoute(
-            builder: (_) => SearchScreen(),
+            builder: (_) => const SearchScreen(),
           );
         }
       case profileRoute:
         {
           return MaterialPageRoute(
-            builder: (_) => ProfileScreen(),
+            builder: (_) => const ProfileScreen(),
           );
         }
       case categoryRoute:
@@ -134,7 +134,7 @@ class AppRouter {
       case accountInfo:
         {
           return MaterialPageRoute(
-            builder: (_) => AccountInformationScreen(),
+            builder: (_) => const AccountInformationScreen(),
           );
         }
       case changePassRoute:

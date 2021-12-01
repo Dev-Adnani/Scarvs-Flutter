@@ -11,7 +11,7 @@ import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 import 'package:scarvs/presentation/widgets/shimmer.effects.dart';
 
 class SearchScreen extends StatefulWidget {
-  SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -52,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: Row(
                       children: [
                         hSizedBox1,
-                        Container(
+                        SizedBox(
                           height: MediaQuery.of(context).size.height * 0.07,
                           width: MediaQuery.of(context).size.width * 0.65,
                           child: TextField(
@@ -100,15 +100,13 @@ class _SearchScreenState extends State<SearchScreen> {
                     ? searchData(
                         searchContent: searchProductController.text,
                         themeFlag: themeFlag)
-                    : Container(
-                        child: Center(
-                          child: Text(
-                            'Search Any Product',
-                            style: CustomTextWidget.bodyText2(
-                              color: themeFlag
-                                  ? AppColors.creamColor
-                                  : AppColors.mirage,
-                            ),
+                    : Center(
+                        child: Text(
+                          'Search Any Product',
+                          style: CustomTextWidget.bodyText2(
+                            color: themeFlag
+                                ? AppColors.creamColor
+                                : AppColors.mirage,
                           ),
                         ),
                       )
@@ -123,7 +121,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget searchData({required String searchContent, required bool themeFlag}) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           height: MediaQuery.of(context).size.height * 0.75,
           width: MediaQuery.of(context).size.width,
           child: Consumer<ProductNotifier>(

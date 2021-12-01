@@ -31,7 +31,7 @@ Widget productUI({
           Stack(
             alignment: Alignment.center,
             children: [
-              Container(
+              SizedBox(
                 height: MediaQuery.of(context).size.height * 0.3,
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: themeFlag
@@ -41,7 +41,7 @@ Widget productUI({
               Hero(
                 tag: Key(snapshot.productId.toString()),
                 child: InteractiveViewer(
-                  child: Container(
+                  child: SizedBox(
                     height: MediaQuery.of(context).size.height * 0.22,
                     width: MediaQuery.of(context).size.width * 0.7,
                     child: Image.network(snapshot.productImage),
@@ -68,13 +68,13 @@ Widget productUI({
         ),
       ),
       vSizedBox2,
-      Container(
+      SizedBox(
         height: MediaQuery.of(context).size.height * 0.05,
         width: MediaQuery.of(context).size.width,
         child: selectSize(context: context, themeFlag: themeFlag),
       ),
       Padding(
-        padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -88,7 +88,7 @@ Widget productUI({
               style: ElevatedButton.styleFrom(
                 primary: themeFlag ? AppColors.creamColor : AppColors.mirage,
                 enableFeedback: true,
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 25,
                   vertical: 8,
                 ),

@@ -32,8 +32,8 @@ class AppSettings extends StatelessWidget {
             Consumer<ThemeNotifier>(
               builder: (context, notifier, _) {
                 return SwitchListTile(
-                  contentPadding: EdgeInsets.only(left: 16, right: 4),
-                  title: Text(
+                  contentPadding: const EdgeInsets.only(left: 16, right: 4),
+                  title: const Text(
                     'Dark Mode',
                     style: TextStyle(
                       fontSize: 15,
@@ -56,7 +56,7 @@ class AppSettings extends StatelessWidget {
                   fontSize: 14,
                   color: themeFlag ? AppColors.creamColor : AppColors.mirage),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Text(

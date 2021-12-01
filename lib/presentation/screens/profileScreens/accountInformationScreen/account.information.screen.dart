@@ -21,7 +21,7 @@ class AccountInformationScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: themeFlag ? AppColors.mirage : AppColors.creamColor,
         body: Container(
-          margin: EdgeInsets.fromLTRB(16, 0, 16, 16),
+          margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
           child: SingleChildScrollView(
             child: Consumer<UserNotifier>(
               builder: (context, notifier, _) {
@@ -48,7 +48,7 @@ class AccountInformationScreen extends StatelessWidget {
                         Align(
                           alignment: Alignment.center,
                           child: Container(
-                            margin: EdgeInsets.only(top: 40),
+                            margin: const EdgeInsets.only(top: 40),
                             width: profilePictureSize,
                             height: profilePictureSize,
                             child: CircleAvatar(
@@ -69,11 +69,11 @@ class AccountInformationScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 40),
-                        Text(
+                        const SizedBox(height: 40),
+                        const Text(
                           'Name',
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Text(
@@ -84,13 +84,13 @@ class AccountInformationScreen extends StatelessWidget {
                                 : AppColors.mirage,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 24,
                         ),
-                        Text(
+                        const Text(
                           'Email',
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Text(
@@ -101,13 +101,13 @@ class AccountInformationScreen extends StatelessWidget {
                                 : AppColors.mirage,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 24,
                         ),
-                        Text(
+                        const Text(
                           'Address ',
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Text(
@@ -118,13 +118,13 @@ class AccountInformationScreen extends StatelessWidget {
                                 : AppColors.mirage,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 24,
                         ),
-                        Text(
+                        const Text(
                           'Phone ',
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Text(

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+
 import 'package:scarvs/app/constants/app.colors.dart';
 
 class CustomBackButton extends StatelessWidget {
   final String route;
   final bool themeFlag;
-  const CustomBackButton({required this.route, required this.themeFlag});
+  const CustomBackButton({
+    Key? key,
+    required this.route,
+    required this.themeFlag,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return IconButton(
@@ -21,7 +26,10 @@ class CustomBackButton extends StatelessWidget {
 
 class CustomBackPop extends StatelessWidget {
   final bool themeFlag;
-  const CustomBackPop({required this.themeFlag});
+  const CustomBackPop({
+    Key? key,
+    required this.themeFlag,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return IconButton(

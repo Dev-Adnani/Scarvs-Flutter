@@ -66,9 +66,6 @@ class EditProfileScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       onPressed: () async {
-                        print('Email -> ${userNotifier.getUserEmail!}');
-                        print('Address -> ${addressController.text}');
-                        print('No -> ${numberController.text}');
                         if (_formKey.currentState!.validate()) {
                           userNotifier
                               .updateUserDetails(
@@ -77,8 +74,6 @@ class EditProfileScreen extends StatelessWidget {
                                   userPhoneNo: numberController.text,
                                   context: context)
                               .then((value) {
-                            print('Value -> $value');
-
                             if (value) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackUtil.stylishSnackBar(

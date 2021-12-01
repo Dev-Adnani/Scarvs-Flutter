@@ -54,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
                           .pushNamed(AppRouter.editProfileRoute);
                     },
                     child: Container(
-                      margin: EdgeInsets.fromLTRB(0, 18, 0, 18),
+                      margin: const EdgeInsets.fromLTRB(0, 18, 0, 18),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -85,7 +85,7 @@ class ProfileScreen extends StatelessWidget {
                           .pushNamed(AppRouter.changePassRoute);
                     },
                     child: Container(
-                      margin: EdgeInsets.fromLTRB(0, 18, 0, 18),
+                      margin: const EdgeInsets.fromLTRB(0, 18, 0, 18),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -116,7 +116,7 @@ class ProfileScreen extends StatelessWidget {
                           .pushNamed(AppRouter.appSettingsRoute);
                     },
                     child: Container(
-                      margin: EdgeInsets.fromLTRB(0, 18, 0, 18),
+                      margin: const EdgeInsets.fromLTRB(0, 18, 0, 18),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -141,7 +141,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 18, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 18, 0, 0),
                     child: GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
@@ -161,7 +161,7 @@ class ProfileScreen extends StatelessWidget {
                                 ? AppColors.creamColor
                                 : AppColors.mirage,
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Text(
                             'Sign Out',
                             style: TextStyle(
@@ -189,15 +189,14 @@ class ProfileScreen extends StatelessWidget {
     required bool themeFlag,
   }) {
     final userNotifier = Provider.of<UserNotifier>(context, listen: false);
-    var userName =
-        userNotifier.getUserName == null ? 'Wait' : userNotifier.getUserName;
+    var userName = userNotifier.getUserName ?? 'Wait';
     final double profilePictureSize = MediaQuery.of(context).size.width / 4;
     return Container(
-      margin: EdgeInsets.only(bottom: 14),
+      margin: const EdgeInsets.only(bottom: 14),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
+          SizedBox(
             width: profilePictureSize,
             height: profilePictureSize,
             child: GestureDetector(
@@ -229,7 +228,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 16,
           ),
           Expanded(
@@ -237,14 +236,14 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  userName!,
+                  userName,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: themeFlag ? AppColors.creamColor : AppColors.mirage,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 GestureDetector(
@@ -270,7 +269,7 @@ class ProfileScreen extends StatelessWidget {
                               : AppColors.mirage,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
                       Icon(

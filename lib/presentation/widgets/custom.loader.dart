@@ -12,7 +12,7 @@ Widget customLoader(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      Container(
+      SizedBox(
         height: MediaQuery.of(context).size.height * 0.4,
         width: MediaQuery.of(context).size.width * 0.8,
         child: Lottie.asset(

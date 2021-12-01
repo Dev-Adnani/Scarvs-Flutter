@@ -15,44 +15,44 @@ import 'package:scarvs/presentation/screens/searchScreen/search.screen.dart';
 
 final List<SalomonBottomBarItem> bottomNavBarIcons = [
   SalomonBottomBarItem(
-    icon: Icon(Icons.home),
-    title: Text("Home"),
+    icon: const Icon(Icons.home),
+    title: const Text("Home"),
     selectedColor: Colors.purple,
   ),
 
   /// Search
   SalomonBottomBarItem(
-    icon: Icon(Icons.search),
-    title: Text("Search"),
+    icon: const Icon(Icons.search),
+    title: const Text("Search"),
     selectedColor: Colors.orange,
   ),
 
   /// Likes
   SalomonBottomBarItem(
-    icon: Icon(Icons.favorite_border),
-    title: Text("Likes"),
+    icon: const Icon(Icons.favorite_border),
+    title: const Text("Likes"),
     selectedColor: Colors.pink,
   ),
 
   SalomonBottomBarItem(
-    icon: Icon(EvaIcons.shoppingCart),
-    title: Text("Cart"),
+    icon: const Icon(EvaIcons.shoppingCart),
+    title: const Text("Cart"),
     selectedColor: Colors.teal,
   ),
 
   SalomonBottomBarItem(
-    icon: Icon(EvaIcons.person),
-    title: Text("Profile"),
+    icon: const Icon(EvaIcons.person),
+    title: const Text("Profile"),
     selectedColor: Colors.amber,
   ),
 ];
 
 final screens = [
-  ProductScreen(),
-  SearchScreen(),
-  FavScreen(),
-  CartScreen(),
-  ProfileScreen(),
+  const ProductScreen(),
+  const SearchScreen(),
+  const FavScreen(),
+  const CartScreen(),
+  const ProfileScreen(),
 ];
 
 class HomeScreen extends StatefulWidget {
@@ -83,8 +83,9 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: themeFlag ? AppColors.mirage : AppColors.creamColor,
       body: screens[_currentIndex],
       bottomNavigationBar: SalomonBottomBar(
-        selectedItemColor: themeFlag ? AppColors.rawSienna : Color(0xff4B7191),
-        unselectedItemColor: themeFlag ? Colors.white : Color(0xff777777),
+        selectedItemColor:
+            themeFlag ? AppColors.rawSienna : const Color(0xff4B7191),
+        unselectedItemColor: themeFlag ? Colors.white : const Color(0xff777777),
         currentIndex: _currentIndex,
         onTap: (i) => setState(() => _currentIndex = i),
         items: bottomNavBarIcons,

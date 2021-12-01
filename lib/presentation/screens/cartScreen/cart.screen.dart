@@ -39,7 +39,7 @@ class CartScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.75,
               width: MediaQuery.of(context).size.width,
               child: Consumer<CartNotifier>(

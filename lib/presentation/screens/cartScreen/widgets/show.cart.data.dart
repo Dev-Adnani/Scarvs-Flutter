@@ -12,8 +12,9 @@ Widget showCartData(
     required BuildContext context,
     required double height}) {
   return Padding(
-    padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+    padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
     child: ListView.builder(
+      // ignore: prefer_const_constructors
       physics: ScrollPhysics(),
       shrinkWrap: true,
       itemCount: snapshot.length,
@@ -32,81 +33,73 @@ Widget _showCartData({
   required bool themeFlag,
   required double height,
 }) {
-  return GestureDetector(
-    onTap: () {},
-    child: Container(
-      margin: EdgeInsets.only(top: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          GestureDetector(
-            onTap: () {},
-            child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(4)),
-                child: Image.network(
-                  cart.productImage,
-                  width: MediaQuery.of(context).size.width / 4,
-                  height: MediaQuery.of(context).size.width / 4,
-                )),
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Text(
-                    cart.productName,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: CustomTextWidget.bodyText2(
-                      color:
-                          themeFlag ? AppColors.creamColor : AppColors.mirage,
-                    ),
+  return Container(
+    margin: const EdgeInsets.only(top: 16),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GestureDetector(
+          onTap: () {},
+          child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(4)),
+              child: Image.network(
+                cart.productImage,
+                width: MediaQuery.of(context).size.width / 4,
+                height: MediaQuery.of(context).size.width / 4,
+              )),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                cart.productName,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: CustomTextWidget.bodyText2(
+                  color: themeFlag ? AppColors.creamColor : AppColors.mirage,
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 5),
+                child: Text(
+                  '₹  ${cart.productPrice}',
+                  style: CustomTextWidget.bodyText2(
+                    color: themeFlag ? AppColors.creamColor : AppColors.mirage,
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 5),
-                  child: Text(
-                    '₹  ${cart.productPrice}',
-                    style: CustomTextWidget.bodyText2(
-                      color:
-                          themeFlag ? AppColors.creamColor : AppColors.mirage,
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 5),
+                child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: () {
+                    deleteItemFromCart(
+                      context: context,
+                      themeFlag: themeFlag,
+                      productId: cart.productId,
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+                    height: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(width: 1, color: Colors.grey[300]!),
                     ),
+                    child: Icon(Icons.delete,
+                        color: AppColors.rawSienna, size: 20),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 5),
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      deleteItemFromCart(
-                        context: context,
-                        themeFlag: themeFlag,
-                        productId: cart.productId,
-                      );
-                    },
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                      height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(width: 1, color: Colors.grey[300]!),
-                      ),
-                      child: Icon(Icons.delete,
-                          color: AppColors.rawSienna, size: 20),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
-      ),
+              )
+            ],
+          ),
+        )
+      ],
     ),
   );
 }
@@ -165,7 +158,7 @@ void deleteItemFromCart(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10),
     ),
-    title: Text(
+    title: const Text(
       'Delete from Cart',
       style: TextStyle(fontSize: 18),
     ),

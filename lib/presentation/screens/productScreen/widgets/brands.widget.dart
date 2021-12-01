@@ -9,6 +9,8 @@ import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 
 class BrandWidget extends StatelessWidget {
+  const BrandWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     ThemeNotifier _themeNotifier = Provider.of<ThemeNotifier>(context);
@@ -38,7 +40,7 @@ class BrandWidget extends StatelessWidget {
           );
         },
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -51,7 +53,7 @@ class BrandWidget extends StatelessWidget {
             color: themeFlag ? AppColors.mirage : AppColors.creamColor,
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   height: MediaQuery.of(context).size.height * 0.14,
                   width: MediaQuery.of(context).size.width * 0.38,
                   child: Image.network(images),
@@ -70,36 +72,34 @@ class BrandWidget extends StatelessWidget {
       );
     }
 
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Brands We Have',
-            style: CustomTextWidget.bodyTextB2(
-              color: themeFlag ? AppColors.creamColor : AppColors.mirage,
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Brands We Have',
+          style: CustomTextWidget.bodyTextB2(
+            color: themeFlag ? AppColors.creamColor : AppColors.mirage,
           ),
-          vSizedBox2,
-          Container(
-            height: MediaQuery.of(context).size.height * 0.20,
-            width: MediaQuery.of(context).size.width,
-            child: ListView.builder(
-              shrinkWrap: false,
-              scrollDirection: Axis.horizontal,
-              physics: ScrollPhysics(),
-              itemCount: _categories.length,
-              itemBuilder: (BuildContext context, int index) {
-                return showBrands(
-                  _categories[index],
-                  _categoriesImages[index],
-                );
-              },
-            ),
-          )
-        ],
-      ),
+        ),
+        vSizedBox2,
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.20,
+          width: MediaQuery.of(context).size.width,
+          child: ListView.builder(
+            shrinkWrap: false,
+            scrollDirection: Axis.horizontal,
+            physics: const ScrollPhysics(),
+            itemCount: _categories.length,
+            itemBuilder: (BuildContext context, int index) {
+              return showBrands(
+                _categories[index],
+                _categoriesImages[index],
+              );
+            },
+          ),
+        )
+      ],
     );
   }
 }

@@ -28,7 +28,7 @@ class CategoryScreen extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
               child: Row(
                 children: [
@@ -51,7 +51,7 @@ class CategoryScreen extends StatelessWidget {
             vSizedBox2,
             Column(
               children: [
-                Container(
+                SizedBox(
                   height: MediaQuery.of(context).size.height * 0.85,
                   width: MediaQuery.of(context).size.width,
                   child: Consumer<ProductNotifier>(

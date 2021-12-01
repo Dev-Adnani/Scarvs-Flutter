@@ -9,7 +9,7 @@ import 'package:scarvs/presentation/widgets/dimensions.widget.dart';
 Widget productForYou(
     {required snapshot, required themeFlag, required BuildContext context}) {
   return ListView.builder(
-    physics: ScrollPhysics(),
+    physics: const ScrollPhysics(),
     shrinkWrap: true,
     itemCount: snapshot.length,
     scrollDirection: Axis.horizontal,
@@ -23,7 +23,7 @@ Widget productForYou(
           );
         },
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -34,54 +34,52 @@ Widget productForYou(
             ),
             elevation: 6,
             color: themeFlag ? AppColors.mirage : AppColors.creamColor,
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Hero(
-                    tag: Key(prod.productId.toString()),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.15,
-                      width: MediaQuery.of(context).size.height * 0.165,
-                      child: Image.network(
-                        prod.productImage,
-                        fit: BoxFit.scaleDown,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Hero(
+                  tag: Key(prod.productId.toString()),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    width: MediaQuery.of(context).size.height * 0.165,
+                    child: Image.network(
+                      prod.productImage,
+                      fit: BoxFit.scaleDown,
+                    ),
+                  ),
+                ),
+                vSizedBox1,
+                Container(
+                  margin: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        prod.productName,
+                        style: CustomTextWidget.bodyText3(
+                          color: themeFlag
+                              ? AppColors.creamColor
+                              : AppColors.mirage,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ),
-                  vSizedBox1,
-                  Container(
-                    margin: EdgeInsets.fromLTRB(8, 8, 8, 8),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          prod.productName,
-                          style: CustomTextWidget.bodyText3(
-                            color: themeFlag
-                                ? AppColors.creamColor
-                                : AppColors.mirage,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
+                      Text(
+                        '₹  ${prod.productPrice}',
+                        style: CustomTextWidget.bodyText3(
+                          color: themeFlag
+                              ? AppColors.creamColor
+                              : AppColors.mirage,
                         ),
-                        Text(
-                          '₹  ${prod.productPrice}',
-                          style: CustomTextWidget.bodyText3(
-                            color: themeFlag
-                                ? AppColors.creamColor
-                                : AppColors.mirage,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
