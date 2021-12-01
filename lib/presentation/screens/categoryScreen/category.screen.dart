@@ -70,7 +70,7 @@ class CategoryScreen extends StatelessWidget {
                             return customLoader(
                               context: context,
                               themeFlag: themeFlag,
-                              text: 'Oops Some Error Occurred',
+                              text: 'No Stock Available',
                               lottieAsset: AppAssets.error,
                             );
                           } else {

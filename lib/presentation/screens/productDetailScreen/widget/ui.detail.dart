@@ -1,8 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
+import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/models/productID.model.dart';
+import 'package:scarvs/core/notifiers/cart.notifier.dart';
+import 'package:scarvs/core/notifiers/size.notifier.dart';
+import 'package:scarvs/core/notifiers/user.notifier.dart';
+import 'package:scarvs/core/utils/snackbar.util.dart';
 import 'package:scarvs/presentation/screens/productDetailScreen/widget/select.size.dart';
 import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
@@ -13,6 +19,10 @@ Widget productUI({
   required bool themeFlag,
   required SingleProductData snapshot,
 }) {
+  CartNotifier cartNotifier = Provider.of<CartNotifier>(context, listen: false);
+  UserNotifier userNotifier = Provider.of<UserNotifier>(context, listen: false);
+  SizeNotifier sizeNotifier = Provider.of<SizeNotifier>(context, listen: false);
+
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -96,7 +106,36 @@ Widget productUI({
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                cartNotifier
+                    .addToCart(
+                  useremail: userNotifier.getUserEmail!,
+                  productPrice: snapshot.productPrice,
+                  productName: snapshot.productName,
+                  productCategory: snapshot.productCategory,
+                  productImage: snapshot.productImage,
+                  context: context,
+                  productSize: sizeNotifier.getSize,
+                )
+                    .then((value) {
+                  if (value) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackUtil.stylishSnackBar(
+                        text: 'Added To Cart',
+                        context: context,
+                      ),
+                    );
+                    Navigator.of(context).pushNamed(AppRouter.homeRoute);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackUtil.stylishSnackBar(
+                        text: 'Oops Something Went Wrong',
+                        context: context,
+                      ),
+                    );
+                  }
+                });
+              },
               child: Text(
                 'Buy Now',
                 style: CustomTextWidget.bodyTextB2(

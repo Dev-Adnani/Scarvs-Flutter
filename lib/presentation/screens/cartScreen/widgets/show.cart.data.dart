@@ -14,8 +14,7 @@ Widget showCartData(
   return Padding(
     padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
     child: ListView.builder(
-      // ignore: prefer_const_constructors
-      physics: ScrollPhysics(),
+      physics: const ScrollPhysics(),
       shrinkWrap: true,
       itemCount: snapshot.length,
       itemBuilder: (context, index) {
@@ -128,7 +127,7 @@ void deleteItemFromCart(
           .then((value) {
         if (value) {
           Navigator.pop(context);
-
+          cartNotifier.refresh();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackUtil.stylishSnackBar(
               text: 'Deleted From Cart',

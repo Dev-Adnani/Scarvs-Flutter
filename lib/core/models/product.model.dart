@@ -6,7 +6,7 @@ class ProductModel {
   });
   late final bool filled;
   late final bool received;
-  late final List<ProductData> data;
+  late final List<ProductData>? data;
 
   ProductModel.fromJson(Map<String, dynamic> json) {
     filled = json['filled'];
@@ -18,7 +18,7 @@ class ProductModel {
     final _data = <String, dynamic>{};
     _data['filled'] = filled;
     _data['received'] = received;
-    _data['data'] = data.map((e) => e.toJson()).toList();
+    _data['data'] = data?.map((e) => e.toJson()).toList();
     return _data;
   }
 }

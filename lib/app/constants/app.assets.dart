@@ -4,13 +4,14 @@ class AppAssets {
   static const String onBoardingThree =
       'assets/animations/onBoardingThree.json';
   static const String error = 'assets/animations/error.json';
+  static const String nodata = 'assets/animations/nodata.json';
 
   static const String homeJordan = 'assets/images/shoes/jordan.png';
   static const String diamondWhite = 'assets/images/misc/diamondWhite.png';
   static const String diamondBlack = 'assets/images/misc/diamondBlack.png';
 
   static const String brandJordan =
-      'https://res.cloudinary.com/devadnani/image/upload/v1637739611/Scarvs%20Main/Products/jordan_wd5gie.png';
+      'https://res.cloudinary.com/devadnani/image/upload/v1638344627/Scarvs%20Main/Products/as_oxfgjh.png';
   static const String brandReebok =
       'https://res.cloudinary.com/devadnani/image/upload/v1637740600/Scarvs%20Main/Category/Reebok_h08nkr.png';
   static const String brandNike =

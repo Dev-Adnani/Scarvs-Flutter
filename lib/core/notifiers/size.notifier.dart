@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class SizeNotifier with ChangeNotifier {
-  String? size;
+  String size = '8';
 
   bool sizeEight = true;
   bool sizeNine = false;
   bool sizeTen = false;
   bool sizeEleven = false;
 
-  String? get getSize => size;
+  String get getSize => size;
 
   selectSizeEight() {
     sizeEight = true;

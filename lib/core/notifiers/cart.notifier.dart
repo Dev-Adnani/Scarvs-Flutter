@@ -19,10 +19,11 @@ class CartNotifier with ChangeNotifier {
       final _productFilled = response.filled;
       final _productReceived = response.received;
 
+      notifyListeners();
       if (_productReceived && _productFilled) {
         return _productBody;
       } else if (!_productFilled || !_productReceived) {
-        return [];
+        return null;
       }
     } on SocketException catch (_) {
       ScaffoldMessenger.of(context).showSnackBar(SnackUtil.stylishSnackBar(
@@ -52,7 +53,9 @@ class CartNotifier with ChangeNotifier {
       var response = AddToCartModel.fromJson(
         jsonDecode(products),
       );
-      return response;
+
+      final _productAdded = response.added;
+      return _productAdded;
     } on SocketException catch (_) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackUtil.stylishSnackBar(
@@ -61,6 +64,10 @@ class CartNotifier with ChangeNotifier {
         ),
       );
     }
+  }
+
+  void refresh() {
+    notifyListeners();
   }
 
   Future deleteFromCart(

@@ -49,19 +49,12 @@ class CartScreen extends StatelessWidget {
                         context: context,
                         useremail: userNotifier.getUserEmail!),
                     builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
+                      if (!snapshot.hasData) {
                         return customLoader(
                           context: context,
                           themeFlag: themeFlag,
-                          text: 'No',
-                          lottieAsset: AppAssets.error,
-                        );
-                      } else if (!snapshot.hasData) {
-                        return customLoader(
-                          context: context,
-                          themeFlag: themeFlag,
-                          text: 'No Product Found !',
-                          lottieAsset: AppAssets.error,
+                          text: 'Please Wait',
+                          lottieAsset: AppAssets.nodata,
                         );
                       } else {
                         var _snapshot = snapshot.data as List;

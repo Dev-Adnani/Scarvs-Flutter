@@ -6,7 +6,7 @@ class CartData {
   });
   late final bool filled;
   late final bool received;
-  late final List<CartItems> data;
+  late final List<CartItems>? data;
 
   CartData.fromJson(Map<String, dynamic> json) {
     filled = json['filled'];
@@ -18,7 +18,7 @@ class CartData {
     final _data = <String, dynamic>{};
     _data['filled'] = filled;
     _data['received'] = received;
-    _data['data'] = data.map((e) => e.toJson()).toList();
+    _data['data'] = data?.map((e) => e.toJson()).toList();
     return _data;
   }
 }
