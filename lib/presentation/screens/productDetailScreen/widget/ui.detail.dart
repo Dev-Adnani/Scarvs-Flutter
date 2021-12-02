@@ -137,7 +137,7 @@ Widget productUI({
                 });
               },
               child: Text(
-                'Buy Now',
+                'Add To Cart',
                 style: CustomTextWidget.bodyTextB2(
                   color: themeFlag ? AppColors.mirage : AppColors.creamColor,
                 ),

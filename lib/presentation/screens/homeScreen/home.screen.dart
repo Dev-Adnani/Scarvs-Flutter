@@ -8,7 +8,6 @@ import 'package:scarvs/app/constants/app.keys.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:scarvs/core/notifiers/user.notifier.dart';
 import 'package:scarvs/presentation/screens/cartScreen/cart.screen.dart';
-import 'package:scarvs/presentation/screens/favouriteScreen/favourite.screen.dart';
 import 'package:scarvs/presentation/screens/productScreen/product.screen.dart';
 import 'package:scarvs/presentation/screens/profileScreens/mainProfileScreen/profile.screen.dart';
 import 'package:scarvs/presentation/screens/searchScreen/search.screen.dart';
@@ -27,13 +26,6 @@ final List<SalomonBottomBarItem> bottomNavBarIcons = [
     selectedColor: Colors.orange,
   ),
 
-  /// Likes
-  SalomonBottomBarItem(
-    icon: const Icon(Icons.favorite_border),
-    title: const Text("Likes"),
-    selectedColor: Colors.pink,
-  ),
-
   SalomonBottomBarItem(
     icon: const Icon(EvaIcons.shoppingCart),
     title: const Text("Cart"),
@@ -50,7 +42,6 @@ final List<SalomonBottomBarItem> bottomNavBarIcons = [
 final screens = [
   const ProductScreen(),
   const SearchScreen(),
-  const FavScreen(),
   const CartScreen(),
   const ProfileScreen(),
 ];

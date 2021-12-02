@@ -6,23 +6,70 @@ import 'package:scarvs/core/notifiers/cart.notifier.dart';
 import 'package:scarvs/core/utils/snackbar.util.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 
-Widget showCartData(
-    {required snapshot,
-    required themeFlag,
-    required BuildContext context,
-    required double height}) {
+Widget showCartData({
+  required snapshot,
+  required themeFlag,
+  required BuildContext context,
+  required double height,
+}) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-    child: ListView.builder(
-      physics: const ScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: snapshot.length,
-      itemBuilder: (context, index) {
-        CartItems cart = snapshot[index];
-        return _showCartData(
-            context: context, cart: cart, themeFlag: themeFlag, height: height);
-      },
+    child: Stack(
+      children: [
+        ListView.builder(
+          physics: const ScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: snapshot.length,
+          itemBuilder: (context, index) {
+            CartItems cart = snapshot[index];
+            return _showCartData(
+              context: context,
+              cart: cart,
+              themeFlag: themeFlag,
+              height: height,
+            );
+          },
+        ),
+        Align(
+          alignment: FractionalOffset.bottomCenter,
+          child: cartPrice(
+            snapshot: snapshot,
+            themeFlag: themeFlag,
+            context: context,
+          ),
+        )
+      ],
     ),
+  );
+}
+
+Widget cartPrice({
+  required snapshot,
+  required themeFlag,
+  required BuildContext context,
+}) {
+  int cartPrice = 0;
+  List<CartItems> cart = snapshot;
+
+  for (int i = 0; i < cart.length; i++) {
+    cartPrice += int.tryParse(cart[i].productPrice)!;
+  }
+
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      const Text(
+        'Total',
+        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+      ),
+      const SizedBox(height: 5),
+      Text(
+        '₹ $cartPrice',
+        style: CustomTextWidget.bodyText2(
+          color: themeFlag ? AppColors.creamColor : AppColors.mirage,
+        ),
+      ),
+    ],
   );
 }
 
@@ -97,7 +144,7 @@ Widget _showCartData({
               )
             ],
           ),
-        )
+        ),
       ],
     ),
   );
