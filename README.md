@@ -4,8 +4,7 @@
 
 ##  Brief About App
 
-- A Mini Insta Clone !
--  Sociable could be a Flutter Social Media App With Complete Backend And quantifiability.
+-  Scarvs could be a Flutter Ecommerce  App With Complete Backend And quantifiability.
 
 
 ## ⚙️ Tech-Stack
