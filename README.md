@@ -8,7 +8,7 @@
 
 
 ## ⚙️ Tech-Stack
-The application is built entirely with Flutter. For the backend services, I have made use of Custom Backend.
+The application is built entirely with Flutter. For the backend services, I have made use of [Custom Backend](https://github.com/Dev-Adnani/Scarvs-Backend).
 
 
 ## 💫 App Features
