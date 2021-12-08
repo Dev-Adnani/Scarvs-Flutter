@@ -6,6 +6,7 @@ import 'package:scarvs/core/notifiers/product.notifier.dart';
 import 'package:scarvs/core/notifiers/size.notifier.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:scarvs/core/notifiers/user.notifier.dart';
+import 'package:scarvs/core/service/payment.service.dart';
 
 class AppProvider {
   static List<SingleChildWidget> providers = [
@@ -15,5 +16,6 @@ class AppProvider {
     ChangeNotifierProvider(create: (_) => ProductNotifier()),
     ChangeNotifierProvider(create: (_) => SizeNotifier()),
     ChangeNotifierProvider(create: (_) => CartNotifier()),
+    ChangeNotifierProvider(create: (_) => PaymentService()),
   ];
 }

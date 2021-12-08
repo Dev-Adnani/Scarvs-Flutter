@@ -23,6 +23,7 @@ dependencies:
   http: ^0.13.4
   lottie: ^1.2.1
   provider: ^6.0.1
+  razorpay_flutter: ^1.2.7
   salomon_bottom_bar: ^3.1.0
   shared_preferences: ^2.0.8
   shimmer: ^2.0.0
