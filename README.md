@@ -1,16 +1,52 @@
-# scarvs
+# Scarvs
 
-A new Flutter project.
+<img align="left"  height="200px" width="200px" alt="ToDo"  src="https://github.com/Dev-Adnani/Scarvs-Flutter/blob/main/assets/images/logo/logo.png"/>
 
-## Getting Started
+##  Brief About App
 
-This project is a starting point for a Flutter application.
+-  Scarvs could be a Flutter Ecommerce  App With Complete Backend And quantifiability.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## ⚙️ Tech-Stack
+The application is built entirely with Flutter. For the backend services, I have made use of [Custom Backend](https://github.com/Dev-Adnani/Scarvs-Backend).
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## 💫 App Features
+ 
+- Sign Up 
+- RazorPay Integration // Soon
+- Login / Sign Up 
+- Dark / Light Mode
+- Complex Cart System
+- Shimmer Effects
+
+
+## Libraries
+
+- Main Library Used in App 
+    - Provider
+    - Cache Manager
+    - Concentric Transition
+    - Cupertino Icons
+    - Eva Icons Flutter
+    - Flutter Launcher Icons
+    - Flutter SVG
+    - Http
+    - Lottie
+    - Salomon Bottom Bar
+    - Shared Preferences
+    - Shimmer
+    - Url Strategy
+
+
+## :heart:Design Credits : ![Dmitry Lauretsky](https://dribbble.com/shots/15493632-E-Commerce-Mobile-App)
+
+
+## :heart: Found this project useful?
+
+If you found this project useful, then please consider giving it a :star: on Github and sharing it with your friends via social media.
+
+
+
+
+
