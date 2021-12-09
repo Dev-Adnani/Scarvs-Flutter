@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
-import 'package:scarvs/app/constants/app.keys.dart';
 import 'package:scarvs/core/models/cart.model.dart';
 import 'package:scarvs/core/notifiers/cart.notifier.dart';
-import 'package:scarvs/core/notifiers/user.notifier.dart';
 import 'package:scarvs/core/service/payment.service.dart';
 import 'package:scarvs/core/utils/snackbar.util.dart';
 import 'package:scarvs/presentation/widgets/custom.text.style.dart';
@@ -13,7 +10,6 @@ import 'package:scarvs/presentation/widgets/custom.text.style.dart';
 Widget showCartData({
   required snapshot,
   required themeFlag,
-  required Razorpay razorpay,
   required BuildContext context,
   required double height,
 }) {
@@ -38,7 +34,6 @@ Widget showCartData({
         Align(
           alignment: FractionalOffset.bottomCenter,
           child: cartPrice(
-            razorpay: razorpay,
             snapshot: snapshot,
             themeFlag: themeFlag,
             context: context,
@@ -49,12 +44,9 @@ Widget showCartData({
   );
 }
 
-//
-
 Widget cartPrice({
   required snapshot,
   required themeFlag,
-  required Razorpay razorpay,
   required BuildContext context,
 }) {
   int cartPrice = 0;
@@ -63,42 +55,6 @@ Widget cartPrice({
   for (int i = 0; i < cart.length; i++) {
     cartPrice += int.tryParse(cart[i].productPrice)!;
   }
-
-  //Razor Pay
-
-  razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS,
-      Provider.of<PaymentService>(context, listen: false).handlePaymentSuccess);
-  razorpay.on(Razorpay.EVENT_PAYMENT_ERROR,
-      Provider.of<PaymentService>(context, listen: false).handlePaymentError);
-  razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET,
-      Provider.of<PaymentService>(context, listen: false).handleExternalWallet);
-
-  Future checkMeOut({
-    required BuildContext context,
-    required Razorpay razorpay,
-  }) async {
-    var options = {
-      'key': AppKeys.razorKey,
-      'amount': cartPrice,
-      'name': Provider.of<UserNotifier>(context, listen: false).getUserName,
-      'description': 'Payment',
-      'prefill': {
-        'contact': '8888888888',
-        'email': Provider.of<UserNotifier>(context, listen: false).getUserEmail,
-      },
-      'external': {
-        'wallet': ['paytm']
-      }
-    };
-
-    try {
-      razorpay.open(options);
-    } catch (e) {
-      // ignore: avoid_print
-      print(e.toString());
-    }
-  }
-
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -119,7 +75,8 @@ Widget cartPrice({
           borderRadius: BorderRadius.circular(8),
         ),
         onPressed: () async {
-          checkMeOut(context: context, razorpay: razorpay);
+          Provider.of<PaymentService>(context, listen: false)
+              .checkMeOut(context: context, cartPrice: cartPrice);
         },
         color: AppColors.rawSienna,
         child: const Text(

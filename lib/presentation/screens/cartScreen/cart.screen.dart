@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:scarvs/app/constants/app.assets.dart';
 import 'package:scarvs/app/constants/app.colors.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/notifiers/cart.notifier.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
 import 'package:scarvs/core/notifiers/user.notifier.dart';
-import 'package:scarvs/core/service/payment.service.dart';
 import 'package:scarvs/presentation/screens/cartScreen/widgets/show.cart.data.dart';
 import 'package:scarvs/presentation/widgets/custom.back.btn.dart';
 import 'package:scarvs/presentation/widgets/custom.loader.dart';
@@ -21,11 +19,9 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  Razorpay razorpay = Razorpay();
-
   @override
   void dispose() {
-    razorpay.clear();
+    // Provider.of<PaymentService>(context, listen: false).disposeRazorPay();
     super.dispose();
   }
 
@@ -76,9 +72,7 @@ class _CartScreenState extends State<CartScreen> {
                           );
                         } else {
                           var _snapshot = snapshot.data as List;
-
                           return showCartData(
-                            razorpay: razorpay,
                             height: MediaQuery.of(context).size.height * 0.17,
                             snapshot: _snapshot,
                             themeFlag: themeFlag,
