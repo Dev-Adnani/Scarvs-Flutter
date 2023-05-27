@@ -5,7 +5,7 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   cache_manager: ^1.0.0+3
@@ -24,7 +24,6 @@ dependencies:
   http: ^0.13.4
   lottie: ^1.2.1
   provider: ^6.0.1
-  razorpay: ^0.0.2
   razorpay_flutter: ^1.2.7
   salomon_bottom_bar: ^3.1.0
   shared_preferences: ^2.0.8

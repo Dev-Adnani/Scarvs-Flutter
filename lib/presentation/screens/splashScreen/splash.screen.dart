@@ -22,10 +22,9 @@ class _SplashScreenState extends State<SplashScreen> {
       valueType: ValueType.StringValue,
       actionIfNull: () {
         Navigator.of(context).pushNamed(AppRouter.onBoardRoute).whenComplete(
-            () => {
-                  WriteCache.setString(
+            () => WriteCache.setString(
                       key: AppKeys.onBoardDone, value: 'Something')
-                });
+                );
       },
       actionIfNotNull: () {
         CacheManagerUtils.conditionalCache(

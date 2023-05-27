@@ -4,11 +4,11 @@ import 'package:scarvs/app/constants/app.theme.dart';
 import 'package:scarvs/app/providers/app.provider.dart';
 import 'package:scarvs/app/routes/app.routes.dart';
 import 'package:scarvs/core/notifiers/theme.notifier.dart';
-import 'web_url/configure_nonweb.dart'
-    if (dart.library.html) 'web_url/configure_web.dart';
+// import 'web_url/configure_nonweb.dart'
+//     if (dart.library.html) 'web_url/configure_web.dart';
 
 void main() {
-  configureApp();
+  // configureApp();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const Lava());
 }

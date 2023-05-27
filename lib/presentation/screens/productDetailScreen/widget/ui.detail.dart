@@ -95,7 +95,7 @@ Widget productUI({
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: themeFlag ? AppColors.creamColor : AppColors.mirage,
+                backgroundColor: themeFlag ? AppColors.creamColor : AppColors.mirage,
                 enableFeedback: true,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 25,

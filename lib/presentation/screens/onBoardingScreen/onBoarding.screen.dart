@@ -46,7 +46,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         itemCount: 3,
         curve: Curves.ease,
         duration: const Duration(seconds: 2),
-        itemBuilder: (index, value) {
+        itemBuilder: (index) {
           OnBoardingModel card = widget.cards[index % widget.cards.length];
           return PageCard(card: card);
         },

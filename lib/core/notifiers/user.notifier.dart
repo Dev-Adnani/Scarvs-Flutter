@@ -42,14 +42,12 @@ class UserNotifier with ChangeNotifier {
         Navigator.of(context)
             .pushReplacementNamed(AppRouter.loginRoute)
             .whenComplete(
-              () => {
-                DeleteCache.deleteKey(AppKeys.userData).whenComplete(() {
+              () => DeleteCache.deleteKey(AppKeys.userData).whenComplete(() {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackUtil.stylishSnackBar(
                         text: 'Oops Session Timeout', context: context),
                   );
-                })
-              },
+                }),
             );
       } else {
         userEmail = _data.email;

@@ -61,7 +61,7 @@ class ProductScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      height: MediaQuery.of(context).size.height * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.23,
                       width: MediaQuery.of(context).size.width,
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(15, 10, 5, 0),
@@ -83,7 +83,7 @@ class ProductScreen extends StatelessWidget {
                               children: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    primary: AppColors.creamColor,
+                                    backgroundColor: AppColors.creamColor,
                                     enableFeedback: true,
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 20,
